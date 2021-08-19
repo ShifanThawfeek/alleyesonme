@@ -124,7 +124,7 @@
                   <!-- / Page Background Image -->
                 </v-flex>
 
-                <v-flex xs12 sm12 md12 lg6 xl6 class="px-5">
+                <!-- <v-flex xs12 sm12 md12 lg6 xl6 class="px-5">
                   <v-col class="shrink" style="min-width: 300px">
                     <v-text-field
                       label="Font size"
@@ -132,19 +132,47 @@
                       v-model="fontSize"
                     ></v-text-field>
                   </v-col>
-                </v-flex>
+                </v-flex> -->
 
                 <v-flex xs12 sm12 md12 lg6 xl6 class="px-5">
+                  <v-col class="shrink" style="min-width: 300px">
+                    <v-col cols="12">
+                      <v-subheader class="pl-0"> Font size </v-subheader>
+                      <v-slider
+                        v-model="fontSize"
+                        :max="max"
+                        :min="min"
+                        thumb-label
+                      ></v-slider>
+                    </v-col>
+                  </v-col>
+                </v-flex>
+
+                <!-- <v-flex xs12 sm12 md12 lg6 xl6 class="px-5">
                   <v-col class="shrink" style="min-width: 300px">
                     <v-text-field
                       label="Font weight"
                       type="number"
                       v-model="fontWeight"
-                    ></v-text-field>
+                    ></v-text-field>fontWeight
+                  </v-col>
+                </v-flex> -->
+
+                <v-flex xs12 sm12 md12 lg6 xl6 class="px-5">
+                  <v-col class="shrink" style="min-width: 300px">
+                    <v-col cols="12">
+                      <v-subheader class="pl-0"> Font weight </v-subheader>
+                      <v-slider
+                        v-model="fontWeight"
+                        :max="maxfontWeight"
+                        :min="minfontWeight"
+                        thumb-label
+                      ></v-slider>
+                    </v-col>
                   </v-col>
                 </v-flex>
 
-                <v-flex xs12 sm12 md12 lg6 xl6 class="px-5">
+                <!-- <v-flex xs12 sm12 md12 lg6 xl6 class="px-5">
                   <v-col class="shrink" style="min-width: 300px">
                     <v-text-field
                       label="Buttons border size"
@@ -152,15 +180,45 @@
                       v-model="buttonBorderSize"
                     ></v-text-field>
                   </v-col>
-                </v-flex>
+                </v-flex> -->
 
                 <v-flex xs12 sm12 md12 lg6 xl6 class="px-5">
+                  <v-col class="shrink" style="min-width: 300px">
+                    <v-col cols="12">
+                      <v-subheader class="pl-0">
+                        Buttons border size
+                      </v-subheader>
+                      <v-slider
+                        v-model="buttonBorderSize"
+                        :max="maxbuttonBorderSize"
+                        :min="minbuttonBorderSize"
+                        thumb-label
+                      ></v-slider>
+                    </v-col>
+                  </v-col>
+                </v-flex>
+
+                <!-- <v-flex xs12 sm12 md12 lg6 xl6 class="px-5">
                   <v-col class="shrink" style="min-width: 300px">
                     <v-text-field
                       label="Shape of buttons"
                       type="number"
                       v-model="borderRadius"
                     ></v-text-field>
+                  </v-col>
+                </v-flex> -->
+
+                <v-flex xs12 sm12 md12 lg6 xl6 class="px-5">
+                  <v-col class="shrink" style="min-width: 300px">
+                    <v-col cols="12">
+                      <v-subheader class="pl-0"> Shape of buttons </v-subheader>
+                      <v-slider
+                        v-model="borderRadius"
+                        :max="maxborderRadius"
+                        :min="minborderRadius"
+                        thumb-label
+                      ></v-slider>
+                    </v-col>
                   </v-col>
                 </v-flex>
 
@@ -384,7 +442,7 @@
                     </v-text-field>
                   </v-col>
                 </v-flex>
-<!-- 
+                <!-- 
                 <v-flex xs12 sm12 md12 lg6 xl6 class="px-5">
                   <v-text-field
                     label="Font color on hover"
@@ -392,7 +450,6 @@
                   ></v-text-field>
                 </v-flex> -->
 
-                
                 <v-flex xs12 sm12 md12 lg6 xl6 class="px-5">
                   <v-col class="shrink" style="min-width: 300px">
                     <v-text-field
@@ -417,10 +474,7 @@
                           </template>
                           <v-card>
                             <v-card-text class="pa-0">
-                              <v-color-picker
-                                v-model="fontColorHover"
-                                flat
-                              />
+                              <v-color-picker v-model="fontColorHover" flat />
                             </v-card-text>
                           </v-card>
                         </v-menu>
@@ -584,6 +638,15 @@ export default {
       menu4: false,
       menu5: false,
       menu6: false,
+      min: 0,
+      max: 30,
+      minfontWeight: 400,
+      maxfontWeight: 500,
+      minbuttonBorderSize: 0,
+      maxbuttonBorderSize: 5,
+      maxborderRadius: 0,
+      maxborderRadius: 60,
+
       type: "color",
       valid: false,
       profile: null,
@@ -592,18 +655,18 @@ export default {
       imageMessage: "",
       imageLoading: false,
       dialog: false,
-      fontSize: "",
-      fontWeight: "",
+      fontSize: 15,
+      fontWeight: 450,
       fontColor: "",
       fontColorHover: "",
       pageBackground: "",
       buttonBackground: "",
       buttonBackgroundHover: "",
-      buttonBorderSize: "",
+      buttonBorderSize: 2,
       buttonBorderSizeHover: "",
       buttonBorder: "",
       buttonBorderHover: "",
-      borderRadius: "",
+      borderRadius: 0,
       backgroundImage: "",
       iconColor: "",
       customSuccess: false,
