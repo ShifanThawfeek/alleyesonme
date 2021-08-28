@@ -61,6 +61,7 @@
                                     <v-text-field prefix="https://www.tiktok.com/" label="Tiktok URL" v-model="tiktok" color="cyan accent-3" outlined flat></v-text-field>
                                     <v-text-field prefix="https://paypal.com/" label="Paypal URL" v-model="paypal" color="cyan accent-3" outlined flat></v-text-field>
                                     <v-text-field prefix="https://line.me/" label="Line URL" v-model="line" color="cyan accent-3" outlined flat></v-text-field>
+                                    <v-text-field prefix="https://www.gmail.com/" label="Gmail URL" v-model="gmail" color="cyan accent-3" outlined flat></v-text-field>
                                     <div style="justify-content: flex-end; display: flex">
                                         <v-btn class="white--text" color="cyan accent-3" large @click="validateSocialMediaLinks" elevation="0">Save</v-btn>
                                     </div>
@@ -169,6 +170,7 @@ export default {
             paypal: JSON.parse(this.user).social.paypal,
             tiktok: JSON.parse(this.user).social.tiktok,
             line: JSON.parse(this.user).social.line,
+            gmail: JSON.parse(this.user).social.gmail,
             successSocial: false,
             failureSocial: false,
             messageSocial: false,
@@ -247,7 +249,9 @@ export default {
                     paypal: this.paypal,
                     tiktok: this.tiktok,
                     line: this.line,
+                    gmail: this.gmail,
                 }
+                console.log('yes ok');
                 // Send the request
                 axios.put('/user/social', links)
                 .then(res => {

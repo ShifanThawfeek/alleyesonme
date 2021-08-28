@@ -25,9 +25,38 @@
     transition-property: opacity;
     max-width: 250px;
 
-overflow: hidden;
-display: -webkit-box;
--webkit-line-clamp: 3;
--webkit-box-orient: vertical;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
 }
+
+// When the width of this document is 1024 pixels or more, follow these
+@media only screen and (min-width: 1024px) {
+    .v-btn__content {
+        align-items: center;
+        color: inherit;
+        display: flex;
+        flex: 1 0 auto;
+        justify-content: inherit;
+        line-height: normal;
+        position: relative;
+        transition: inherit;
+        transition-property: opacity;
+        max-width: 770px;
+    
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+    }
+  }
+
+  // When the width of this document is 1024 pixels or more, follow these
+@media only screen and (min-width: 1024px) {
+    .v-btn {
+        
+    }
+  }
+
 

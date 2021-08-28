@@ -483,6 +483,42 @@
                   </v-col>
                 </v-flex>
 
+                <v-flex xs12 sm12 md12 lg6 xl6 class="px-5">
+                  <v-col class="shrink" style="min-width: 300px">
+                    <v-text-field
+                      placeholder="Username font color"
+                      v-mask="mask7"
+                      hide-details
+                      class="ma-0 pa-0"
+                      solo
+                    >
+                      <template v-slot:append>
+                        <v-menu
+                          v-model="menu8"
+                          top
+                          nudge-bottom="105"
+                          nudge-left="16"
+                          :close-on-content-click="false"
+                        >
+                          <template v-slot:activator="{ on }">
+                            <div style="border: 0.7px solid">
+                              <div :style="swatchStyle7" v-on="on" />
+                            </div>
+                          </template>
+                          <v-card>
+                            <v-card-text class="pa-0">
+                              <v-color-picker
+                                v-model="usernameFontColor"
+                                flat
+                              />
+                            </v-card-text>
+                          </v-card>
+                        </v-menu>
+                      </template>
+                    </v-text-field>
+                  </v-col>
+                </v-flex>
+
                 <br />
 
                 <div style="display: flex; justify-content: flex-end">
@@ -631,6 +667,7 @@ export default {
       mask4: "!#XXXXXXXX",
       mask5: "!#XXXXXXXX",
       mask6: "!#XXXXXXXX",
+      mask7: "!#XXXXXXXX",
       menu: false,
       menu1: false,
       menu2: false,
@@ -638,6 +675,7 @@ export default {
       menu4: false,
       menu5: false,
       menu6: false,
+      menu7: false,
       min: 0,
       max: 30,
       minfontWeight: 400,
@@ -669,6 +707,7 @@ export default {
       borderRadius: 0,
       backgroundImage: "",
       iconColor: "",
+      usernameFontColor: "",
       customSuccess: false,
       customFailure: false,
       customMessage: "",
@@ -778,6 +817,18 @@ export default {
         transition: "border-radius 200ms ease-in-out",
       };
     },
+
+    swatchStyle7() {
+      const { usernameFontColor, menu7 } = this;
+      return {
+        backgroundColor: usernameFontColor,
+        cursor: "pointer",
+        height: "30px",
+        width: "30px",
+        borderRadius: menu7 ? "50%" : "0px",
+        transition: "border-radius 200ms ease-in-out",
+      };
+    },
   },
   methods: {
     isUrl(value) {
@@ -853,6 +904,7 @@ export default {
         buttonBorderHover: this.buttonBorderHover,
         borderRadius: this.borderRadius,
         iconColor: this.iconColor,
+        usernameFontColor: this.usernameFontColor,
       };
       // Update the customization settings
       axios
@@ -867,6 +919,7 @@ export default {
           console.log("refresh 2");
         })
         .catch((err) => {
+          console.log(err)
           this.customSuccess = false;
           this.customFailure = true;
           this.customMessage = "Something went wrong, Please try again later.";
@@ -886,6 +939,7 @@ export default {
           buttonBackgroundHover: "#17D8E2",
           buttonBorder: "#17D8E2",
           buttonBorderHover: "#17D8E2",
+          usernameFontColor: "#17D8E2",
         };
       } else {
         theme = this.light;
@@ -923,6 +977,7 @@ export default {
             (this.buttonBorderHover = res.data.buttonBorderHover),
             (this.borderRadius = res.data.borderRadius),
             (this.iconColor = res.data.iconColor);
+            (this.usernameFontColor = res.data.usernameFontColor);
           if (this.isUrl(res.data.pageBackground)) {
             this.type = "image";
           } else {

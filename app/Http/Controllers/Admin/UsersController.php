@@ -51,6 +51,7 @@ class UsersController extends Controller
             'fontWeight' => '900',
             'fontColor' => 'white',
             'fontColorHover' => 'grey',
+            'usernameFontColor' => 'blue',
             'pageBackground' => '{
                 "name": "Mango Pulp",
                 "colors": ["#F09819", "#EDDE5D"]

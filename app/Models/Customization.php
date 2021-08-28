@@ -23,7 +23,8 @@ class Customization extends Model
         'buttonBorder', 
         'buttonBorderHover',
         'borderRadius',
-        'iconColor'
+        'iconColor',
+        'usernameFontColor'
     ];
 
     public function user()
