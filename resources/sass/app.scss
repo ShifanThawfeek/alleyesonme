@@ -29,6 +29,7 @@
     display: -webkit-box;
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
+    white-space: initial;
 }
 
 // When the width of this document is 1024 pixels or more, follow these
@@ -49,13 +50,7 @@
         display: -webkit-box;
         -webkit-line-clamp: 3;
         -webkit-box-orient: vertical;
-    }
-  }
-
-  // When the width of this document is 1024 pixels or more, follow these
-@media only screen and (min-width: 1024px) {
-    .v-btn {
-        
+        white-space: initial;
     }
   }
 

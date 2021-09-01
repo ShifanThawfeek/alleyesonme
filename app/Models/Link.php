@@ -11,9 +11,14 @@ class Link extends Model
 
     public $fillable = ['user_id', 'name', 'link', 'is_active', 'order'];
 
-    public function user() 
+    // public function user() 
+    // {
+    //     return $this->belongsTo('App\Models\User');
+    // }
+
+    public function user()
     {
-        return $this->belongsTo('App\Models\User');
+        return $this->belongsTo(User::class);
     }
 
     public function click()

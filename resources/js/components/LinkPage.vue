@@ -24,25 +24,30 @@
         <!-- Username -->
         <br />
         <div style="display: flex; justify-content: center">
-            <a
-              :href="user.username"
-               :style="`
+          <a
+            :href="user.username"
+            :style="`
                         color: ${user.customization.usernameFontColor};
                     `"
-
-              class="
-                text-center text-decoration-none
-                font-weight-bold
-                mt-2
-                text-h6
-              "
-              >{{ "@" + user.username }}</a
-            >
+            class="
+              text-center text-decoration-none
+              font-weight-bold
+              mt-2
+              text-h6
+            "
+            >{{ "@" + user.username }}</a
+          >
         </div>
 
         <p class="text-center caption mt-2" style="font-size: 15px !important">
           {{ user.description }}
         </p>
+
+        <!-- test -->
+        <!-- <header>
+  <h2 contentEditable role='textbox' aria-multiline='true'>And stay alive...</h2>
+</header> -->
+
         <!-- / Username -->
         <div v-if="user.links.length == 0">
           <p class="text-center">This user has no links yet.</p>
@@ -74,7 +79,11 @@
             {{ link.name }}
           </v-btn>
         </div>
+
         <!-- / Links -->
+
+
+
         <!-- Social media links -->
         <div
           v-if="social"
@@ -172,6 +181,7 @@
         <div style="display: flex; justify-content: center">
           <a href="/">
             <v-img
+              style="mix-blend-mode: difference;"
               contain
               :src="JSON.parse(website).logo"
               class="linkPageLogo"
@@ -304,7 +314,7 @@ export default {
         window.open("https://www.line.tv/", "_blank");
       }
       if (sm == "gmail") {
-          window.open("https://www.gmail.com/", "_blank");
+        window.open("https://www.gmail.com/", "_blank");
       }
     },
   },
