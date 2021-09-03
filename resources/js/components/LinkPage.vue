@@ -64,9 +64,10 @@
             :key="index"
             @click="analytic(link)"
             block
-            class="main-btn my-3 py-8"
+            class="main-btn my-3"
             elevation="0"
             large
+            style="height: 100px"
             :style="`
                         font-size: ${user.customization.fontSize}px;
                         font-weight: ${user.customization.fontWeight};

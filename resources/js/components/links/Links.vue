@@ -23,21 +23,44 @@
             src="assets/images/analyticsSample.jpg"
             class="ml-3 img-fluid"
           ></v-img>
+
           <v-btn
             v-if="JSON.parse(user).is_subscribed == 0"
             href="/upgrade"
             align="center"
             justify="center"
-            class="blue"
+            color="#17d8e2"
             style="
               position: absolute;
               transform: translate(-50%, -50%);
               margin-right: -50%;
               top: 50%;
               left: 50%;
+
+              display: inline-block;
+              height: auto;
+              white-space: normal;
             "
-            >🔒 Get access to powerful analytics & insights</v-btn
           >
+            <v-img
+              icon
+              src="assets/images/lock.png"
+              class="ml-3 img-fluid"
+              width="25px"
+              height="25px"
+              style="
+                position: absolute;
+                transform: translate(-50%, -50%);
+                margin-right: -50%;
+                top: 50%;
+                left: 0%;
+              "
+            >
+            </v-img>
+            <p style="margin-bottom: 10px; margin-top: 10px; margin-left: 27px">
+              Get access to powerful analytics & insights
+            </p>
+          </v-btn>
         </v-card>
 
         <v-layout row wrap justify-center class="mt-3">
@@ -75,12 +98,18 @@
                       </span>
                     </p>
 
-                    <p>   
-                      <span class="mx-2" v-if="JSON.parse(user).is_subscribed == 1">
+                    <p>
+                      <span
+                        class="mx-2"
+                        v-if="JSON.parse(user).is_subscribed == 1"
+                      >
                         <v-icon>mdi-cursor-default-click</v-icon>
                         <span>{{ link.click.length }}</span>
                       </span>
-                      <span class="mx-2" v-if="JSON.parse(user).is_subscribed == 1">
+                      <span
+                        class="mx-2"
+                        v-if="JSON.parse(user).is_subscribed == 1"
+                      >
                         <v-icon>mdi-eye</v-icon>
                         <span>{{ link.view.length }}</span>
                       </span>
