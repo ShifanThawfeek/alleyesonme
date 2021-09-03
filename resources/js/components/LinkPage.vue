@@ -105,6 +105,7 @@
           >
             mdi-twitter
           </v-icon>
+
           <v-icon
             @click="goToSm('youtube')"
             :style="`color: ${user.customization.iconColor}!important`"
@@ -113,6 +114,7 @@
           >
             mdi-youtube
           </v-icon>
+
           <v-icon
             @click="goToSm('instagram')"
             :style="`color: ${user.customization.iconColor}!important`"
@@ -121,6 +123,7 @@
           >
             mdi-instagram
           </v-icon>
+
           <v-icon
             @click="goToSm('telegram')"
             :style="`color: ${user.customization.iconColor}!important`"
@@ -129,6 +132,7 @@
           >
             mdi-telegram
           </v-icon>
+
           <v-icon
             @click="goToSm('twitch')"
             :style="`color: ${user.customization.iconColor}!important`"
@@ -137,6 +141,7 @@
           >
             mdi-twitch
           </v-icon>
+
           <v-icon
             @click="goToSm('linkedin')"
             :style="`color: ${user.customization.iconColor}!important`"
@@ -145,31 +150,8 @@
           >
             mdi-linkedin
           </v-icon>
-          <v-icon
-            @click="goToSm('paypal')"
-            :style="`color: ${user.customization.iconColor}!important`"
-            class="mx-2 text-h4"
-            v-if="social.paypal"
-          >
-            mdi-paypal
-          </v-icon>
-          <v-icon
-            @click="goToSm('tiktok')"
-            :style="`color: ${user.customization.iconColor}!important`"
-            class="mx-2 text-h4"
-            v-if="social.tiktok"
-          >
-            mdi-tiktok
-          </v-icon>
-          <v-icon
-            @click="goToSm('line')"
-            :style="`color: ${user.customization.iconColor}!important`"
-            class="mx-2 text-h4"
-            v-if="social.line"
-          >
-            mdi-line
-          </v-icon>
-          <v-icon
+
+            <v-icon
             @click="goToSm('gmail')"
             :style="`color: ${user.customization.iconColor}!important`"
             class="mx-2 text-h4"
@@ -177,6 +159,40 @@
           >
             mdi-gmail
           </v-icon>
+
+<!--  -->
+          <v-icon
+            @click="goToSm('paypal')"
+            :style="`color: ${user.customization.iconColor}!important`"
+            class="mx-2 text-h4"
+            v-if="social.paypal"
+          >
+            <!-- mdi-paypal -->
+            <!-- mdi-fan -->
+            mdi-credit-card
+          </v-icon>
+
+          <v-icon
+            @click="goToSm('tiktok')"
+            :style="`color: ${user.customization.iconColor}!important`"
+            class="mx-2 text-h4"
+            v-if="social.tiktok"
+          >
+            <!-- mdi-tiktok -->
+            mdi-fan
+          </v-icon>
+
+          <v-icon
+            @click="goToSm('line')"
+            :style="`color: ${user.customization.iconColor}!important`"
+            class="mx-2 text-h4"
+            v-if="social.line"
+          >
+            <!-- mdi-line -->
+            mdi-fan
+          </v-icon>
+        
+
         </div>
         <div style="display: flex; justify-content: center">
           <a href="/">
@@ -268,53 +284,55 @@ export default {
       if (sm == "facebook") {
         // window.location.href = 'https://www.facebook.com/' + this.social.facebook
         window.open(
-          "https://www.facebook.com/",
+          'https://www.facebook.com/' + this.social.facebook,
           "_blank" // <- This is what makes it open in a new window.
         );
       }
       if (sm == "twitter") {
         // window.location.href = "https://www.twitter.com/" + this.social.twitter;
         window.open(
-          "https://www.twitter.com/",
+          "https://www.twitter.com/" +  this.social.twitter,
           "_blank" // <- This is what makes it open in a new window.
         );
       }
       if (sm == "instagram") {
         // window.location.href =
         //   "https://www.instagram.com/" + this.social.instagram;
-        window.open("https://www.instagram.com/", "_blank");
+        window.open("https://www.instagram.com/" + this.social.instagram, "_blank");
       }
       if (sm == "linkedin") {
         // window.location.href =
         //   "https://www.linkedin.com/" + this.social.linkedin;
-        window.open("https://www.linkedin.com/", "_blank");
+        window.open("https://www.linkedin.com/" + this.social.linkedin, "_blank");
+      }
+           if (sm == "tiktok") {
+        // window.location.href = "https://www.tiktok.com/" + this.social.tiktok;
+        window.open("https://www.tiktok.com/" + this.social.tiktok, "_blank");
       }
       if (sm == "youtube") {
         // window.location.href = "https://www.youtube.com/" + this.social.youtube;
-        window.open("https://www.youtube.com/", "_blank");
+        window.open("https://www.youtube.com/" + this.social.youtube, "_blank");
       }
       if (sm == "telegram") {
         // window.location.href = "https://www.t.me/" + this.social.telegram;
-        window.open("https://www.t.me/", "_blank");
+        window.open("https://www.t.me/" + this.social.telegram, "_blank");
       }
       if (sm == "twitch") {
         // window.location.href = "https://www.twitch.tv/" + this.social.telegram;
-        window.open("https://www.twitch.tv/", "_blank");
+        window.open("https://www.twitch.tv/" + this.social.telegram, "_blank");
       }
       if (sm == "paypal") {
         // window.location.href = "https://www.paypal.com/" + this.social.paypal;
-        window.open("https://www.paypal.com/", "_blank");
+        window.open("https://www.paypal.com/" + this.social.paypal, "_blank");
       }
-      if (sm == "tiktok") {
-        // window.location.href = "https://www.tiktok.com/" + this.social.tiktok;
-        window.open("https://www.tiktok.com/", "_blank");
-      }
+ 
       if (sm == "line") {
         // window.location.href = "https://www.line.tv/" + this.social.line;
-        window.open("https://www.line.tv/", "_blank");
+        window.open("https://www.line.tv/" + this.social.line, "_blank");
       }
       if (sm == "gmail") {
-        window.open("https://www.gmail.com/", "_blank");
+        // window.open("https://www.gmail.com/" + this.social.gmail, "_blank");
+        window.open("https://mail.google.com/" + this.social.gmail, "_blank");
       }
     },
   },

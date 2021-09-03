@@ -20,7 +20,7 @@
           </v-card-text>
           <v-img
             v-else
-            src="assets/images/analyticsSample.png"
+            src="assets/images/analyticsSample.jpg"
             class="ml-3 img-fluid"
           ></v-img>
           <v-btn
@@ -36,7 +36,7 @@
               top: 50%;
               left: 50%;
             "
-            >Upgrade to PRO to access the analytics</v-btn
+            >🔒 Get access to powerful analytics & insights</v-btn
           >
         </v-card>
 
@@ -74,12 +74,13 @@
                         {{ link.is_active ? "Active" : "Inactive" }}
                       </span>
                     </p>
-                    <p>
-                      <span class="mx-2">
+
+                    <p>   
+                      <span class="mx-2" v-if="JSON.parse(user).is_subscribed == 1">
                         <v-icon>mdi-cursor-default-click</v-icon>
                         <span>{{ link.click.length }}</span>
                       </span>
-                      <span class="mx-2">
+                      <span class="mx-2" v-if="JSON.parse(user).is_subscribed == 1">
                         <v-icon>mdi-eye</v-icon>
                         <span>{{ link.view.length }}</span>
                       </span>
