@@ -17,6 +17,11 @@ import Analytics from "./components/links/Analytics";
 import LandingPage from "./components/LandingPage";
 import StudentForm from "./components/auth/StudentForm";
 
+
+
+
+
+
 require("./bootstrap");
 
 window.Vue = require("vue").default;

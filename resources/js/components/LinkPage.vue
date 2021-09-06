@@ -83,8 +83,6 @@
 
         <!-- / Links -->
 
-
-
         <!-- Social media links -->
         <div
           v-if="social"
@@ -152,7 +150,7 @@
             mdi-linkedin
           </v-icon>
 
-            <v-icon
+          <v-icon
             @click="goToSm('gmail')"
             :style="`color: ${user.customization.iconColor}!important`"
             class="mx-2 text-h4"
@@ -161,44 +159,50 @@
             mdi-gmail
           </v-icon>
 
-<!--  -->
-          <v-icon
+          <!--  -->
+
+          <v
+            @click="goToSm('tiktok')"
+            :style="`color: ${user.customization.iconColor}!important`"
+            class="mx-2 text-h4"
+            v-if="social.tiktok"
+          >
+            <i
+              class="material-icons"
+              style="cursor: pointer; font-size: 34px; padding-top: 10px"
+              >tiktok</i
+            >
+          </v>
+
+          <v
+            @click="goToSm('line')"
+            :style="`color: ${user.customization.iconColor}!important`"
+            class="mx-2 text-h4"
+            v-if="social.line"
+          >
+            <i
+              class="fab fa-line"
+              style="cursor: pointer; font-size: 34px; padding-top: 10px"
+            ></i>
+          </v>
+          <v
             @click="goToSm('paypal')"
             :style="`color: ${user.customization.iconColor}!important`"
             class="mx-2 text-h4"
             v-if="social.paypal"
           >
             <!-- mdi-paypal -->
-            <!-- mdi-fan -->
-            mdi-credit-card
-          </v-icon>
-
-          <v-icon
-            @click="goToSm('tiktok')"
-            :style="`color: ${user.customization.iconColor}!important`"
-            class="mx-2 text-h4"
-            v-if="social.tiktok"
-          >
-            <!-- mdi-tiktok -->
-            mdi-fan
-          </v-icon>
-
-          <v-icon
-            @click="goToSm('line')"
-            :style="`color: ${user.customization.iconColor}!important`"
-            class="mx-2 text-h4"
-            v-if="social.line"
-          >
-            <!-- mdi-line -->
-            mdi-fan
-          </v-icon>
-        
-
+            <i
+              class="material-icons"
+              style="cursor: pointer; font-size: 34px; padding-top: 10px"
+              >paypal</i
+            >
+          </v>
         </div>
         <div style="display: flex; justify-content: center">
           <a href="/">
             <v-img
-              style="mix-blend-mode: difference;"
+              style="mix-blend-mode: difference"
               contain
               :src="JSON.parse(website).logo"
               class="linkPageLogo"
@@ -285,28 +289,34 @@ export default {
       if (sm == "facebook") {
         // window.location.href = 'https://www.facebook.com/' + this.social.facebook
         window.open(
-          'https://www.facebook.com/' + this.social.facebook,
+          "https://www.facebook.com/" + this.social.facebook,
           "_blank" // <- This is what makes it open in a new window.
         );
       }
       if (sm == "twitter") {
         // window.location.href = "https://www.twitter.com/" + this.social.twitter;
         window.open(
-          "https://www.twitter.com/" +  this.social.twitter,
+          "https://www.twitter.com/" + this.social.twitter,
           "_blank" // <- This is what makes it open in a new window.
         );
       }
       if (sm == "instagram") {
         // window.location.href =
         //   "https://www.instagram.com/" + this.social.instagram;
-        window.open("https://www.instagram.com/" + this.social.instagram, "_blank");
+        window.open(
+          "https://www.instagram.com/" + this.social.instagram,
+          "_blank"
+        );
       }
       if (sm == "linkedin") {
         // window.location.href =
         //   "https://www.linkedin.com/" + this.social.linkedin;
-        window.open("https://www.linkedin.com/" + this.social.linkedin, "_blank");
+        window.open(
+          "https://www.linkedin.com/" + this.social.linkedin,
+          "_blank"
+        );
       }
-           if (sm == "tiktok") {
+      if (sm == "tiktok") {
         // window.location.href = "https://www.tiktok.com/" + this.social.tiktok;
         window.open("https://www.tiktok.com/" + this.social.tiktok, "_blank");
       }
@@ -326,7 +336,7 @@ export default {
         // window.location.href = "https://www.paypal.com/" + this.social.paypal;
         window.open("https://www.paypal.com/" + this.social.paypal, "_blank");
       }
- 
+
       if (sm == "line") {
         // window.location.href = "https://www.line.tv/" + this.social.line;
         window.open("https://www.line.tv/" + this.social.line, "_blank");
