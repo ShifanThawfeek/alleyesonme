@@ -198,6 +198,15 @@
               >paypal</i
             >
           </v>
+
+          <v-icon
+            @click="goToSm('whatsapp')"
+            :style="`color: ${user.customization.iconColor}!important`"
+            class="mx-2 text-h4"
+            v-if="social.whatsapp"
+          >
+            mdi-whatsapp
+          </v-icon>
         </div>
         <div style="display: flex; justify-content: center">
           <a href="/">
@@ -342,8 +351,12 @@ export default {
         window.open("https://www.line.tv/" + this.social.line, "_blank");
       }
       if (sm == "gmail") {
+        // window.open("https://mail.google.com/" + this.social.gmail, "_blank");
+        window.open("mailto:youremail@example.com" + this.social.gmail, "_blank");
+      }
+      if (sm == "whatsapp") {
         // window.open("https://www.gmail.com/" + this.social.gmail, "_blank");
-        window.open("https://mail.google.com/" + this.social.gmail, "_blank");
+        window.open("https://web.whatsapp.com/" , "_blank");
       }
     },
   },

@@ -61,7 +61,8 @@
                                     <v-text-field prefix="https://www.tiktok.com/" label="Tiktok URL" v-model="tiktok" color="cyan accent-3" outlined flat></v-text-field>
                                     <v-text-field prefix="https://paypal.com/" label="Paypal URL" v-model="paypal" color="cyan accent-3" outlined flat></v-text-field>
                                     <v-text-field prefix="https://line.me/" label="Line URL" v-model="line" color="cyan accent-3" outlined flat></v-text-field>
-                                    <v-text-field prefix="https://www.gmail.com/" label="Gmail URL" v-model="gmail" color="cyan accent-3" outlined flat></v-text-field>
+                                    <v-text-field prefix="mailto:youremail@example.com/" label="Email URL" v-model="gmail" color="cyan accent-3" outlined flat></v-text-field>
+                                    <v-text-field prefix="https://web.whatsapp.com/" label="WhatsApp URL" v-model="whatsapp" color="cyan accent-3" outlined flat></v-text-field>
                                     <div style="justify-content: flex-end; display: flex">
                                         <v-btn class="white--text" color="cyan accent-3" large @click="validateSocialMediaLinks" elevation="0">Save</v-btn>
                                     </div>
@@ -171,6 +172,7 @@ export default {
             tiktok: JSON.parse(this.user).social.tiktok,
             line: JSON.parse(this.user).social.line,
             gmail: JSON.parse(this.user).social.gmail,
+            whatsapp: JSON.parse(this.user).social.whatsapp,
             successSocial: false,
             failureSocial: false,
             messageSocial: false,
@@ -250,6 +252,7 @@ export default {
                     tiktok: this.tiktok,
                     line: this.line,
                     gmail: this.gmail,
+                    whatsapp: this.whatsapp,
                 }
                 console.log('yes ok');
                 // Send the request
