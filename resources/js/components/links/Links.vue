@@ -154,15 +154,18 @@
                 <div class="white pa-5">You don't have any link yet</div>
               </v-card>
             </div>
+
             <v-btn
               color="cyan accent-3"
               class="mt-5 white--text"
               elevation="0"
               large
+              @click="reorder"
             >
               Save & Preview
               <v-icon>mdi-content-save</v-icon>
             </v-btn>
+
             <v-btn
               color="cyan accent-3"
               class="mt-5 white--text"
@@ -173,6 +176,7 @@
               Refresh
               <v-icon>mdi-refresh</v-icon>
             </v-btn>
+
             <v-btn
               color="cyan accent-3"
               class="white--text mt-5"
@@ -183,6 +187,7 @@
             >
               Preview <v-icon>mdi-link</v-icon>
             </v-btn>
+            
           </v-flex>
           <v-flex xs12 sm12 md5 lg5 xl5 class="px-5 mb-5">
             <v-card elevation="0">
@@ -422,7 +427,6 @@ export default {
             // Add the new link to the links array
             this.getLinks().then((res) => (this.links = res.data));
             this.links = res.data;
-            // document.getElementById("input-51").click();//added by shifan
             document.getElementById("input-55").click(); //added by shifan
           })
           .catch((err) => {
@@ -433,6 +437,12 @@ export default {
           });
       }
     },
+
+    reorder(){
+      console.log("reorder function hit");
+    },
+
+
     deleteLink(link) {
       if (
         confirm(

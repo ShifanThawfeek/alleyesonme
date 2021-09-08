@@ -39,6 +39,11 @@ Auth::routes(['verify' => true]);
 Route::view('/features', 'public.features');
 Route::view('/help', 'public.help');
 Route::view('getting_started', 'public.getting_started');
+Route::view('how_to_create', 'public.how_to_create');
+Route::view('verifying_your_account', 'public.verifying_your_account');
+Route::view('how_to_create_link', 'public.how_to_create_link');
+Route::view('sharing_mataonme', 'public.sharing_mataonme');
+Route::view('be_a_part_of_community', 'public.be_a_part_of_community');
 Route::put('/clicks/add', [LinkPageController::class, 'analytic']);
 Route::put('/views/add', [LinkPageController::class, 'countViews']);
 

@@ -77,7 +77,7 @@
                         border-radius: ${user.customization.borderRadius}px;
                     `"
           >
-            {{ link.name }}
+            {{ link.name + 'hey' }}
           </v-btn>
         </div>
 
