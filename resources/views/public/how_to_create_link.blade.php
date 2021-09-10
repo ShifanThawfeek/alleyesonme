@@ -19,9 +19,9 @@
           <li>Your link will now be live on your MataOnMe, to hide this link simply click the edit button in the bottom right (yellow).</li>
           <li>Click the toggle button at the bottom to deactivate your link.</li>
           <br>
-          <img src="assets/images/2_getting_started.png" style="height: 300px; width:500px;" alt="">
+          <img src="assets/images/2_getting_started.png" style="height: 195px; width:367px;" alt="">
           <br><br>
-          <img src="assets/images/3_getting_started.png" style="height: 300px; width:500px;" alt="">
+          <img src="assets/images/3_getting_started.png" style="height: 195px; width:367px;" alt="">
         </ol>
 
         <br>

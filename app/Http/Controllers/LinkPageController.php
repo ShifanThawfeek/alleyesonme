@@ -13,7 +13,15 @@ class LinkPageController extends Controller
 {
     public function show($username)
     {
-        $user = User::with(['social', 'links', 'customization'])->where('username', $username)->first();
+
+        $user = User::with(['social', 'links', 'customization'])
+        ->where('username', $username)->first();
+
+        
+        // ->orderBy('links.order', 'ASC');
+
+        // $user = User::join('links', 'users.id', '=', 'links.user_id')->with(['social', 'links', 'customization'])->orderBy('order', 'ASC')->get(); 
+
         abort_if(!$user, 404);
         abort_if(!$user->email_verified_at, 403, 'You have to verify your email in order to see this page.');
         return view('link', compact('user'));

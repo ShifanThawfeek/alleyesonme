@@ -59,7 +59,7 @@
             @mousemove="onMouseOver(link.id)"
             @mouseout="onMouseOut(link.id)"
             ref="button"
-            v-for="(link, index) in links"
+            v-for="(link, index) in SortBylinksOrder(links)"
             :id="link.id"
             :key="index"
             @click="analytic(link)"
@@ -77,7 +77,7 @@
                         border-radius: ${user.customization.borderRadius}px;
                     `"
           >
-            {{ link.name + 'hey' }}
+            {{ link.name }} - {{ link.order }}
           </v-btn>
         </div>
 
@@ -91,7 +91,7 @@
           <v-icon
             @click="goToSm('facebook')"
             :style="`color: ${user.customization.iconColor}!important`"
-            class="outlined mx-2 text-h4"
+            class="outlined mx-2 text-h4 zoom"
             v-if="social.facebook"
           >
             mdi-facebook
@@ -99,7 +99,7 @@
           <v-icon
             @click="goToSm('twitter')"
             :style="`color: ${user.customization.iconColor}!important`"
-            class="mx-2 text-h4"
+            class="mx-2 text-h4 zoom"
             v-if="social.twitter"
           >
             mdi-twitter
@@ -108,7 +108,7 @@
           <v-icon
             @click="goToSm('youtube')"
             :style="`color: ${user.customization.iconColor}!important`"
-            class="mx-2 text-h4"
+            class="mx-2 text-h4 zoom"
             v-if="social.youtube"
           >
             mdi-youtube
@@ -117,25 +117,16 @@
           <v-icon
             @click="goToSm('instagram')"
             :style="`color: ${user.customization.iconColor}!important`"
-            class="mx-2 text-h4"
+            class="mx-2 text-h4 zoom"
             v-if="social.instagram"
           >
             mdi-instagram
           </v-icon>
 
           <v-icon
-            @click="goToSm('telegram')"
-            :style="`color: ${user.customization.iconColor}!important`"
-            class="mx-2 text-h4"
-            v-if="social.telegram"
-          >
-            mdi-telegram
-          </v-icon>
-
-          <v-icon
             @click="goToSm('twitch')"
             :style="`color: ${user.customization.iconColor}!important`"
-            class="mx-2 text-h4"
+            class="mx-2 text-h4 zoom"
             v-if="social.twitch"
           >
             mdi-twitch
@@ -144,7 +135,7 @@
           <v-icon
             @click="goToSm('linkedin')"
             :style="`color: ${user.customization.iconColor}!important`"
-            class="mx-2 text-h4"
+            class="mx-2 text-h4 zoom"
             v-if="social.linkedin"
           >
             mdi-linkedin
@@ -153,7 +144,7 @@
           <v-icon
             @click="goToSm('gmail')"
             :style="`color: ${user.customization.iconColor}!important`"
-            class="mx-2 text-h4"
+            class="mx-2 text-h4 zoom"
             v-if="social.gmail"
           >
             mdi-gmail
@@ -164,7 +155,7 @@
           <v
             @click="goToSm('tiktok')"
             :style="`color: ${user.customization.iconColor}!important`"
-            class="mx-2 text-h4"
+            class="mx-2 text-h4 zoom"
             v-if="social.tiktok"
           >
             <i
@@ -177,7 +168,7 @@
           <v
             @click="goToSm('line')"
             :style="`color: ${user.customization.iconColor}!important`"
-            class="mx-2 text-h4"
+            class="mx-2 text-h4 zoom"
             v-if="social.line"
           >
             <i
@@ -185,10 +176,20 @@
               style="cursor: pointer; font-size: 34px; padding-top: 10px"
             ></i>
           </v>
+
+          <v
+            @click="goToSm('telegram')"
+            :style="`color: ${user.customization.iconColor}!important`"
+            class="mx-2 text-h4 zoom"
+            v-if="social.telegram"
+          >
+            <i class="fab fa-telegram-plane" style="cursor: pointer; font-size: 34px; padding-top: 10px"></i>
+          </v>
+
           <v
             @click="goToSm('paypal')"
             :style="`color: ${user.customization.iconColor}!important`"
-            class="mx-2 text-h4"
+            class="mx-2 text-h4 zoom"
             v-if="social.paypal"
           >
             <!-- mdi-paypal -->
@@ -202,7 +203,7 @@
           <v-icon
             @click="goToSm('whatsapp')"
             :style="`color: ${user.customization.iconColor}!important`"
-            class="mx-2 text-h4"
+            class="mx-2 text-h4 zoom"
             v-if="social.whatsapp"
           >
             mdi-whatsapp
@@ -230,6 +231,7 @@ export default {
   props: ["user", "website", "auth"],
   computed: {
     links() {
+      console.log(this.user.links);
       return this.user.links.filter((link) => link.is_active == true);
     },
     social() {
@@ -252,6 +254,13 @@ export default {
           customization.buttonBorder;
       }
     },
+
+    SortBylinksOrder(arr) {
+      return arr.slice().sort((a, b) => {
+        return a.order - b.order;
+      });
+    },
+
     onMouseOver(buttonId) {
       let customization = this.user.customization;
       if (customization) {
@@ -352,11 +361,14 @@ export default {
       }
       if (sm == "gmail") {
         // window.open("https://mail.google.com/" + this.social.gmail, "_blank");
-        window.open("mailto:youremail@example.com" + this.social.gmail, "_blank");
+        window.open(
+          "mailto:youremail@example.com" + this.social.gmail,
+          "_blank"
+        );
       }
       if (sm == "whatsapp") {
         // window.open("https://www.gmail.com/" + this.social.gmail, "_blank");
-        window.open("https://web.whatsapp.com/" , "_blank");
+        window.open("https://web.whatsapp.com/", "_blank");
       }
     },
   },

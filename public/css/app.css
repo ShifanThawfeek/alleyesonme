@@ -29340,3 +29340,12 @@ html.overflow-y-hidden {
     white-space: normal;
   }
 }
+.zoom {
+  transition: transform 0.2s;
+  /* Animation */
+}
+
+.zoom:hover {
+  transform: scale(1.5);
+  /* (150% zoom)*/
+}
