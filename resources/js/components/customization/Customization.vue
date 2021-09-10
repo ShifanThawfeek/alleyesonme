@@ -124,18 +124,8 @@
                   <!-- / Page Background Image -->
                 </v-flex>
 
-                <!-- <v-flex xs12 sm12 md12 lg6 xl6 class="px-5">
-                  <v-col class="shrink" style="min-width: 300px">
-                    <v-text-field
-                      label="Font size"
-                      type="number"
-                      v-model="fontSize"
-                    ></v-text-field>
-                  </v-col>
-                </v-flex> -->
-
                 <v-flex xs12 sm12 md12 lg6 xl6 class="px-5">
-                  <v-col class="shrink" style="min-width: 300px">
+                  <v-col class="shrink">
                     <v-col cols="12">
                       <v-subheader class="pl-0"> Font size </v-subheader>
                       <v-slider
@@ -148,18 +138,8 @@
                   </v-col>
                 </v-flex>
 
-                <!-- <v-flex xs12 sm12 md12 lg6 xl6 class="px-5">
-                  <v-col class="shrink" style="min-width: 300px">
-                    <v-text-field
-                      label="Font weight"
-                      type="number"
-                      v-model="fontWeight"
-                    ></v-text-field>fontWeight
-                  </v-col>
-                </v-flex> -->
-
                 <v-flex xs12 sm12 md12 lg6 xl6 class="px-5">
-                  <v-col class="shrink" style="min-width: 300px">
+                  <v-col class="shrink">
                     <v-col cols="12">
                       <v-subheader class="pl-0"> Font weight </v-subheader>
                       <v-slider
@@ -172,18 +152,8 @@
                   </v-col>
                 </v-flex>
 
-                <!-- <v-flex xs12 sm12 md12 lg6 xl6 class="px-5">
-                  <v-col class="shrink" style="min-width: 300px">
-                    <v-text-field
-                      label="Buttons border size"
-                      type="number"
-                      v-model="buttonBorderSize"
-                    ></v-text-field>
-                  </v-col>
-                </v-flex> -->
-
                 <v-flex xs12 sm12 md12 lg6 xl6 class="px-5">
-                  <v-col class="shrink" style="min-width: 300px">
+                  <v-col class="shrink">
                     <v-col cols="12">
                       <v-subheader class="pl-0">
                         Buttons border size
@@ -198,18 +168,8 @@
                   </v-col>
                 </v-flex>
 
-                <!-- <v-flex xs12 sm12 md12 lg6 xl6 class="px-5">
-                  <v-col class="shrink" style="min-width: 300px">
-                    <v-text-field
-                      label="Shape of buttons"
-                      type="number"
-                      v-model="borderRadius"
-                    ></v-text-field>
-                  </v-col>
-                </v-flex> -->
-
                 <v-flex xs12 sm12 md12 lg6 xl6 class="px-5">
-                  <v-col class="shrink" style="min-width: 300px">
+                  <v-col class="shrink">
                     <v-col cols="12">
                       <v-subheader class="pl-0"> Shape of buttons </v-subheader>
                       <v-slider
@@ -223,7 +183,7 @@
                 </v-flex>
 
                 <v-flex xs12 sm12 md12 lg6 xl6 class="px-5">
-                  <v-col class="shrink" style="min-width: 300px">
+                  <v-col class="shrink">
                     <v-text-field
                       placeholder="Icons colors"
                       v-mask="mask6"
@@ -256,7 +216,7 @@
                 </v-flex>
 
                 <v-flex xs12 sm12 md12 lg6 xl6 class="px-5">
-                  <v-col class="shrink" style="min-width: 300px">
+                  <v-col class="shrink">
                     <v-text-field
                       placeholder="Font color"
                       v-mask="mask"
@@ -289,7 +249,7 @@
                 </v-flex>
 
                 <v-flex xs12 sm12 md12 lg6 xl6 class="px-5">
-                  <v-col class="shrink" style="min-width: 300px">
+                  <v-col class="shrink">
                     <v-text-field
                       placeholder="Buttons background"
                       v-mask="mask2"
@@ -322,7 +282,7 @@
                 </v-flex>
 
                 <v-flex xs12 sm12 md12 lg6 xl6 class="px-5">
-                  <v-col class="shrink" style="min-width: 300px">
+                  <v-col class="shrink">
                     <v-text-field
                       placeholder="Buttons border color"
                       v-mask="mask4"
@@ -354,18 +314,8 @@
                   </v-col>
                 </v-flex>
 
-                <!-- <v-flex xs12 sm12 md12 lg6 xl6 class="px-5">
-                  <v-col class="shrink" style="min-width: 300px">
-                    <v-text-field
-                      label="Buttons background on hover"
-                      v-model="buttonBackgroundHover"
-                    >
-                    </v-text-field>
-                  </v-col>
-                </v-flex> -->
-
                 <v-flex xs12 sm12 md12 lg6 xl6 class="px-5">
-                  <v-col class="shrink" style="min-width: 300px">
+                  <v-col class="shrink">
                     <v-text-field
                       placeholder="Buttons background on hover"
                       v-mask="mask4"
@@ -400,15 +350,8 @@
                   </v-col>
                 </v-flex>
 
-                <!-- <v-flex xs12 sm12 md12 lg6 xl6 class="px-5">
-                  <v-text-field
-                    label="Buttons border color on hover"
-                    v-model="buttonBorderHover"
-                  ></v-text-field>
-                </v-flex> -->
-
                 <v-flex xs12 sm12 md12 lg6 xl6 class="px-5">
-                  <v-col class="shrink" style="min-width: 300px">
+                  <v-col class="shrink">
                     <v-text-field
                       placeholder="Buttons border color on hover"
                       v-mask="mask4"
@@ -451,7 +394,7 @@
                 </v-flex> -->
 
                 <v-flex xs12 sm12 md12 lg6 xl6 class="px-5">
-                  <v-col class="shrink" style="min-width: 300px">
+                  <v-col class="shrink">
                     <v-text-field
                       placeholder="Font color on hover"
                       v-mask="mask4"
@@ -484,7 +427,7 @@
                 </v-flex>
 
                 <v-flex xs12 sm12 md12 lg6 xl6 class="px-5">
-                  <v-col class="shrink" style="min-width: 300px">
+                  <v-col class="shrink">
                     <v-text-field
                       placeholder="Username font color"
                       v-mask="mask7"
@@ -521,6 +464,38 @@
 
                 <br />
 
+                <!-- 
+
+                <div style="display: flex; justify-content: flex-end">
+                  <v-btn-toggle>
+                    <v-btn
+                      target="_blank"
+                      :href="'/' + user.username"
+                      color="primary accent-3"
+                      elevation="0"
+                      class="white--text mt-2"
+                      small
+                      >Preview</v-btn
+                    >
+                    <v-btn
+                      color="success accent-3"
+                      elevation="0"
+                      class="white--text mt-2"
+                      small
+                      @click="refreshPreview"
+                      >Refresh</v-btn
+                    >
+                    <v-btn
+                      color="cyan accent-3"
+                      elevation="0"
+                      class="white--text mt-2"
+                      small
+                      @click="customize"
+                      >Save Changes</v-btn
+                    >
+                  </v-btn-toggle>
+                </div> -->
+
                 <div style="display: flex; justify-content: flex-end">
                   <v-btn-toggle>
                     <v-btn
@@ -546,10 +521,21 @@
                       class="white--text mt-2"
                       large
                       @click="customize"
-                      >Save Changes</v-btn
+                      >Save</v-btn
                     >
                   </v-btn-toggle>
                 </div>
+
+      
+
+                <!-- <v-container>
+    <v-layout wrap align-content-space-around text-xs-center>
+      <v-flex xs3><v-card color="blue"><v-card-text class="px-0">1</v-card-text></v-card></v-flex>
+      <v-flex xs3><v-card color="blue"><v-card-text class="px-0">2</v-card-text></v-card></v-flex>
+      <v-flex xs3><v-card color="blue"><v-card-text class="px-0">3</v-card-text></v-card></v-flex>
+    </v-layout>
+</v-container> -->
+
               </v-layout>
               <br />
             </v-form>
@@ -627,7 +613,7 @@
         <!-- / Profile Image Upload -->
       </v-flex>
 
-      <v-flex xs11 sm11 md11 lg5 xl3 class="px-5">
+      <v-flex xs10 sm10 md10 lg5 xl10 row wrap justify-center>
         <iframe
           ref="iframe"
           :src="iframeSrc"
@@ -919,7 +905,7 @@ export default {
           console.log("refresh 2");
         })
         .catch((err) => {
-          console.log(err)
+          console.log(err);
           this.customSuccess = false;
           this.customFailure = true;
           this.customMessage = "Something went wrong, Please try again later.";
@@ -977,7 +963,7 @@ export default {
             (this.buttonBorderHover = res.data.buttonBorderHover),
             (this.borderRadius = res.data.borderRadius),
             (this.iconColor = res.data.iconColor);
-            (this.usernameFontColor = res.data.usernameFontColor);
+          this.usernameFontColor = res.data.usernameFontColor;
           if (this.isUrl(res.data.pageBackground)) {
             this.type = "image";
           } else {

@@ -1,7 +1,10 @@
 <template>
-  <div class="py-15">
-    <v-layout row wrap justify-center>
-      <v-flex xs10 sm10 md12 lg10 xl4>
+  <!-- <div class="py-15"> -->
+  <div>
+    <!-- <v-layout row wrap justify-center>
+      <v-flex xs3 sm3 md12 lg10 xl4> -->
+    <v-layout row wrap justify-center class="mt-10">
+      <v-flex xs11 sm11 md11 lg7 xl5 class="px-5">
         <!-- Profile image -->
         <div style="display: flex; justify-content: center">
           <v-avatar color="lighten-2" size="150">
@@ -183,7 +186,10 @@
             class="mx-2 text-h4 zoom"
             v-if="social.telegram"
           >
-            <i class="fab fa-telegram-plane" style="cursor: pointer; font-size: 34px; padding-top: 10px"></i>
+            <i
+              class="fab fa-telegram-plane"
+              style="cursor: pointer; font-size: 34px; padding-top: 10px"
+            ></i>
           </v>
 
           <v
@@ -212,7 +218,7 @@
         <div style="display: flex; justify-content: center">
           <a href="/">
             <v-img
-              style="mix-blend-mode: difference"
+              style="mix-blend-mode: difference; "
               contain
               :src="JSON.parse(website).logo"
               class="linkPageLogo"

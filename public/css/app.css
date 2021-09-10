@@ -29349,3 +29349,14 @@ html.overflow-y-hidden {
   transform: scale(1.5);
   /* (150% zoom)*/
 }
+
+.container {
+  width: 100%;
+  /* padding: 12px; */
+  padding-top: 24px;
+  padding-right: 12px;
+  padding-bottom: 24px;
+  padding-left: 12px;
+  margin-right: auto;
+  margin-left: auto;
+}

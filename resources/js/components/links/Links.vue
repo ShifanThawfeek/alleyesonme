@@ -189,6 +189,7 @@
             </v-btn>
             
           </v-flex>
+          
           <v-flex xs12 sm12 md5 lg5 xl5 class="px-5 mb-5">
             <v-card elevation="0">
               <v-card-title class="grey--text text--darken-2"
