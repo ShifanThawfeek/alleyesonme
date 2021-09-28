@@ -526,8 +526,6 @@
                   </v-btn-toggle>
                 </div>
 
-      
-
                 <!-- <v-container>
     <v-layout wrap align-content-space-around text-xs-center>
       <v-flex xs3><v-card color="blue"><v-card-text class="px-0">1</v-card-text></v-card></v-flex>
@@ -535,7 +533,6 @@
       <v-flex xs3><v-card color="blue"><v-card-text class="px-0">3</v-card-text></v-card></v-flex>
     </v-layout>
 </v-container> -->
-
               </v-layout>
               <br />
             </v-form>
@@ -558,6 +555,9 @@
               <v-radio-group v-model="theme" :rules="[rules.required]">
                 <v-radio label="Light" value="light"></v-radio>
                 <v-radio label="Blue" value="blue"></v-radio>
+                <v-radio label="Green" value="green"></v-radio>
+                <v-radio label="ThemeImage" value="themeimage"></v-radio>
+                <v-radio label="ThemeImage2" value="themeimage2"></v-radio>
               </v-radio-group>
               <div style="display: flex; justify-content: flex-end">
                 <v-btn
@@ -704,6 +704,7 @@ export default {
       },
       iframeSrc: "/" + this.user.username,
       themesForm: "",
+
       theme: "",
       light: {
         name: "Light",
@@ -712,6 +713,18 @@ export default {
       blue: {
         name: "Blue",
         colors: ["#17D8E2", "#28abb2"],
+      },
+      green: {
+        name: "Green",
+        colors: ["#3dbd0f", "#c9c8e8"],
+      },
+      themeimage: {
+        name: "ThemeImage",
+        colors: ["#e8c8e2", "#cf17ac"],
+      },
+            themeimage2: {
+        name: "ThemeImage2",
+        colors: ["#fad6a5", "#5f9ea0"],
       },
     };
   },
@@ -891,6 +904,7 @@ export default {
         borderRadius: this.borderRadius,
         iconColor: this.iconColor,
         usernameFontColor: this.usernameFontColor,
+        theme_no: "0",
       };
       // Update the customization settings
       axios
@@ -911,6 +925,7 @@ export default {
           this.customMessage = "Something went wrong, Please try again later.";
         });
     },
+
     saveTheme() {
       this.$refs.themesForm.validate();
       let theme = null;
@@ -919,22 +934,86 @@ export default {
         theme = {
           pageBackground: this.blue,
           iconColor: "#17D8E2",
-          fontColor: "#17D8E2",
-          fontColorHover: "#17D8E2",
+          fontColor: "#1a211b",
+          fontColorHover: "#c42344",
           buttonBackground: "#17D8E2",
           buttonBackgroundHover: "#17D8E2",
           buttonBorder: "#17D8E2",
-          buttonBorderHover: "#17D8E2",
-          usernameFontColor: "#17D8E2",
+          buttonBorderHover: "#e2c717",
+          usernameFontColor: "#1a211b",
+          theme_no: "0",
         };
-      } else {
+      }
+      if (this.theme == "light") {
         theme = this.light;
         theme = {
           pageBackground: this.light,
           iconColor: "#17D8E2",
           buttonborderHover: "#17D8E2",
+          theme_no: "0",
         };
       }
+      if (this.theme == "green") {
+        theme = this.green;
+        theme = {
+          pageBackground: this.green,
+          iconColor: "#d43b24",
+          buttonborderHover: "#17D8E2",
+          usernameFontColor: "#1712a3",
+          theme_no: "0",
+        };
+      }
+      // if (this.theme == "themeimage")
+      // {
+      //     theme = this.themeimage;
+      //     theme = {
+      //     pageBackground: 'https://images.unsplash.com/photo-1544904823-702346908aec?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80',
+      //     iconColor: "#d43b24",
+      //     buttonborderHover: "#17D8E2",
+      //     usernameFontColor: "#1712a3",
+      //     buttonBorderSize: 1,
+      //     borderRadius: 5,
+      //     buttonBorder: "#FF468F",
+      //   };
+      // }
+      // pageBackground: ' http://127.0.0.1:8000/assets/images/8.png',
+
+      //  src="assets/images/analyticsSample.jpg"
+
+      if (this.theme == "themeimage") {
+        theme = this.themeimage;
+        theme = {
+          // pageBackground:
+            // "https://images.unsplash.com/photo-1544904823-702346908aec?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80",
+          iconColor: "#d43b24",
+          usernameFontColor: "#1712a3",
+          theme_no: "1",
+          buttonBackground: "",
+          buttonBackgroundHover: "",
+          buttonborderHover: "",
+          buttonBorderSize: 0,
+          buttonBorderSizeHover: 0,
+          buttonborderHover: "",
+        };
+      }
+
+      if (this.theme == "themeimage2") {
+        theme = this.themeimage2;
+        theme = {
+          pageBackground:this.themeimage2, 
+            // "https://images.unsplash.com/photo-1544904823-702346908aec?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80",
+          iconColor: "#d43b24",
+          usernameFontColor: "#1712a3",
+          theme_no: "2",
+          buttonBackground: "",
+          buttonBackgroundHover: "",
+          buttonborderHover: "",
+          buttonBorderSize: 0,
+          buttonBorderSizeHover: 0,
+          buttonborderHover: "",
+        };
+      }
+
       axios
         .put("/change/background", theme)
         .then((res) => {
@@ -943,6 +1022,7 @@ export default {
         })
         .catch((err) => console.log(err));
     },
+
     init() {
       axios
         .get(`/customization?user=${this.user.id}`)
