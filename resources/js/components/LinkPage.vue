@@ -1,79 +1,73 @@
 <template>
-  <!-- <div class="py-15"> -->
-  <div>
-    <!-- <v-layout row wrap justify-center>
-      <v-flex xs3 sm3 md12 lg10 xl4> -->
-    <v-layout row wrap justify-center class="mt-10">
-      <v-flex xs11 sm11 md11 lg7 xl5 class="px-5">
-        <!-- Profile image -->
-        <div style="display: flex; justify-content: center">
-          <v-avatar color="lighten-2" size="150">
-            <v-img
-              class="user-profile"
-              loading="lazy"
-              :lazy-src="
-                user.photo ||
-                'https://appvital.com/images/profile/file-uploader-api-profile-avatar-2.jpg'
-              "
-              :src="
-                user.photo ||
-                'https://appvital.com/images/profile/file-uploader-api-profile-avatar-2.jpg'
-              "
-              :alt="'@' + user.username + ' on Linktree'"
-            ></v-img>
-          </v-avatar>
-        </div>
-        <!-- / Profile image -->
-        <!-- Username -->
-        <br />
-        <div style="display: flex; justify-content: center">
-          <a
-            :href="user.username"
-            :style="`
+  <v-layout row wrap justify-center>
+    <!-- <v-flex xs11 sm11 md11 lg10 xl5 class="px-5 flex"> -->
+    <!-- Profile image -->
+
+    <div class="mostly-customized-scrollbar">
+      <div style="display: flex; justify-content: center">
+        <!-- User Image on Top of the page -->
+        <v-avatar color="lighten-2" size="150">
+          <v-img
+            class="user-profile"
+            loading="lazy"
+            :lazy-src="
+              user.photo ||
+              'https://appvital.com/images/profile/file-uploader-api-profile-avatar-2.jpg'
+            "
+            :src="
+              user.photo ||
+              'https://appvital.com/images/profile/file-uploader-api-profile-avatar-2.jpg'
+            "
+            :alt="'@' + user.username + ' on Linktree'"
+          ></v-img>
+        </v-avatar>
+      </div>
+
+      <!-- / Profile image -->
+      <!-- Username -->
+      <br />
+      <div style="display: flex; justify-content: center">
+        <a
+          :href="user.username"
+          :style="`
                         color: ${user.customization.usernameFontColor};
                     `"
-            class="
-              text-center text-decoration-none
-              font-weight-bold
-              mt-2
-              text-h6
-            "
-            >{{ "@" + user.username }}</a
-          >
-        </div>
+          class="text-center text-decoration-none font-weight-bold mt-2 text-h6"
+          >{{ "@" + user.username }}</a
+        >
+      </div>
 
-        <p class="text-center caption mt-2" style="font-size: 15px !important">
-          {{ user.description }}
-        </p>
+      <p class="text-center caption mt-2" style="font-size: 15px !important">
+        {{ user.description }}
+      </p>
 
-        <!-- test -->
-        <!-- <header>
-  <h2 contentEditable role='textbox' aria-multiline='true'>And stay alive...</h2>
-</header> -->
+      <!-- / Username -->
+      <div v-if="user.links.length == 0">
+        <p class="text-center">This user has no links yet.</p>
+      </div>
 
-        <!-- / Username -->
-        <div v-if="user.links.length == 0">
-          <p class="text-center">This user has no links yet.</p>
-        </div>
-
-        <!-- <v-alert v-if="user.is_subscribed" type="info" style="border-radius: 0">Current plan</v-alert> -->
-
-        <!-- Links -->
-        <div v-if="user.customization.theme_no == 0" class="justify-center">
-          <v-btn
-            @mousemove="onMouseOver(link.id)"
-            @mouseout="onMouseOut(link.id)"
-            ref="button"
-            v-for="(link, index) in SortBylinksOrder(links)"
-            :id="link.id"
-            :key="index"
-            @click="analytic(link)"
-            block
-            class="main-btn my-3"
-            elevation="0"
-            large
-            style="height: 100px"
-            :style="`
+      <!-- Links -->
+      <div v-if="user.customization.theme_no == is_null" class="justify-center">
+        <v-btn
+          @mousemove="onMouseOver(link.id)"
+          @mouseout="onMouseOut(link.id)"
+          ref="button"
+          v-for="(link, index) in SortBylinksOrder(links)"
+          :id="link.id"
+          :key="index"
+          @click="analytic(link)"
+          block
+          class="main-btn my-3"
+          elevation="0"
+          large
+          style="
+            height: auto;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            padding-left: 10px;
+            padding-right: 10px;
+          "
+          :style="`
                         font-size: ${user.customization.fontSize}px;
                         font-weight: ${user.customization.fontWeight};
                         background: ${user.customization.buttonBackground};
@@ -81,122 +75,438 @@
                         color: ${user.customization.fontColor};
                         border-radius: ${user.customization.borderRadius}px;
                     `"
+        >
+          {{ link.name }}
+        </v-btn>
+      </div>
+      <!-- / Links -->
+      <!-- font-size: ${user.customization.fontSize}px; -->
+
+      <!-- Links -->
+      <div v-if="user.customization.theme_no == 1.1" class="justify-center">
+        <v-img
+          src="http://127.0.0.1:8000/assets/images/2_2_2.png"
+          @mousemove="onMouseOver(link.id)"
+          @mouseout="onMouseOut(link.id)"
+          v-for="(link, index) in SortBylinksOrder(links)"
+          :id="link.id"
+          :key="index"
+          @click="analytic(link)"
+          block
+          class="main-btn my-3 flex"
+          elevation="0"
+          large
+          style="flex"
+          :style="`
+                        font-size: ${user.customization.fontSize}px;
+                        font-weight: ${user.customization.fontWeight};
+                    `"
+        >
+          <!-- Styles for the link description font -->
+          <div
+            style="
+              position: absolute;
+              top: 50%;
+              left: 50%;
+              transform: translate(-50%, -50%);
+              align-items: center;
+              color: inherit;
+              justify-content: inherit;
+              line-height: normal;
+              position: relative;
+              transition: inherit;
+              transition-property: opacity;
+              max-width: 250px;
+              overflow: hidden;
+              display: -webkit-box;
+              -webkit-line-clamp: 3;
+              -webkit-box-orient: vertical;
+              white-space: initial;
+              text-align: center;
+            "
+          >
+            {{ link.name }}
+          </div>
+        </v-img>
+      </div>
+
+      <div v-if="user.customization.theme_no == 1" class="justify-center">
+        <v-img
+          src="http://127.0.0.1:8000/assets/images/8.png"
+          @mousemove="onMouseOver(link.id)"
+          @mouseout="onMouseOut(link.id)"
+          v-for="(link, index) in SortBylinksOrder(links)"
+          :id="link.id"
+          :key="index"
+          @click="analytic(link)"
+          block
+          class="main-btn my-3"
+          elevation="0"
+          large
+          :style="`
+                        font-size: ${user.customization.fontSize}px;
+                        font-weight: ${user.customization.fontWeight};
+                    `"
+        >
+          <!-- Styles for the link description font -->
+          <div
+            style="
+              position: absolute;
+              top: 50%;
+              left: 50%;
+              transform: translate(-50%, -50%);
+              align-items: center;
+              color: inherit;
+              justify-content: inherit;
+              line-height: normal;
+              position: relative;
+              transition: inherit;
+              transition-property: opacity;
+              max-width: 250px;
+              overflow: hidden;
+              display: -webkit-box;
+              -webkit-line-clamp: 3;
+              -webkit-box-orient: vertical;
+              white-space: initial;
+              text-align: center;
+            "
           >
             {{ link.name }} - {{ link.order }}
-          </v-btn>
-        </div>
-        <!-- / Links -->
+          </div>
+        </v-img>
+      </div>
 
-        <!-- Links -->
-        <div v-if="user.customization.theme_no == 1" class="justify-center">
-          <v-img
-            src="http://127.0.0.1:8000/assets/images/test1.png"
-            @mousemove="onMouseOver(link.id)"
-            @mouseout="onMouseOut(link.id)"
-            v-for="(link, index) in SortBylinksOrder(links)"
-            :id="link.id"
-            :key="index"
-            @click="analytic(link)"
-            block
-            class="main-btn my-3"
-            elevation="0"
-            large
-            :style="`
+      <div v-if="user.customization.theme_no == 2">
+        <v-img
+          src="http://127.0.0.1:8000/assets/images/ja.png"
+          @mousemove="onMouseOver(link.id)"
+          @mouseout="onMouseOut(link.id)"
+          v-for="(link, index) in SortBylinksOrder(links)"
+          :id="link.id"
+          :key="index"
+          @click="analytic(link)"
+          block
+          class="main-btn my-3"
+          elevation="0"
+          large
+          :style="`
                         font-size: ${user.customization.fontSize}px;
                         font-weight: ${user.customization.fontWeight};
                     `"
+        >
+          <!-- Styles for the link description font -->
+          <div
+            style="
+              position: absolute;
+              top: 50%;
+              left: 50%;
+              transform: translate(-50%, -50%);
+
+              align-items: center;
+              color: inherit;
+              justify-content: inherit;
+              line-height: normal;
+              position: relative;
+              transition: inherit;
+              transition-property: opacity;
+              max-width: 250px;
+              overflow: hidden;
+              display: -webkit-box;
+              -webkit-line-clamp: 3;
+              -webkit-box-orient: vertical;
+              white-space: initial;
+              text-align: center;
+            "
           >
-            <div
-              style="
-                position: absolute;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
+            {{ link.name }} - {{ link.order }}
+          </div>
+        </v-img>
+      </div>
 
-                align-items: center;
-                color: inherit;
-                justify-content: inherit;
-                line-height: normal;
-                position: relative;
-                transition: inherit;
-                transition-property: opacity;
-                max-width: 250px;
-                overflow: hidden;
-                display: -webkit-box;
-                -webkit-line-clamp: 3;
-                -webkit-box-orient: vertical;
-                white-space: initial;
-                text-align: center;
-              "
-            >
-              {{ link.name }} - {{ link.order }}
-            </div>
-          </v-img>
-        </div>
-
-        <div v-if="user.customization.theme_no == 2" class="justify-center">
-
-          <!-- Image Map Generated by http://www.image-map.net/ -->
-          <!-- <img src="http://127.0.0.1:8000/assets/images/test2.png" usemap="#image-map" /> -->
-
-          <!-- <map name="image-map">
-            <area
-              target=""
-              alt=""
-              title=""
-              href=""
-              coords="45,18,351,72"
-              shape="rect"
-            />
-          </map> -->
-
-          <v-img
-            src="http://127.0.0.1:8000/assets/images/test2.png"
-            @mousemove="onMouseOver(link.id)"
-            @mouseout="onMouseOut(link.id)"
-            v-for="(link, index) in SortBylinksOrder(links)"
-            :id="link.id"
-            :key="index"
-            @click="analytic(link)"
-            block
-            class="main-btn my-3"
-            elevation="0"
-            large
-            :style="`
+      <!-- Second Row First Theme S -->
+      <div v-if="user.customization.theme_no == 2.1" class="justify-center">
+        <v-img
+          src="http://127.0.0.1:8000/assets/images/5_5_5.png"
+          @mousemove="onMouseOver(link.id)"
+          @mouseout="onMouseOut(link.id)"
+          v-for="(link, index) in SortBylinksOrder(links)"
+          :id="link.id"
+          :key="index"
+          @click="analytic(link)"
+          block
+          class="main-btn my-3"
+          elevation="0"
+          large
+          :style="`
                         font-size: ${user.customization.fontSize}px;
                         font-weight: ${user.customization.fontWeight};
                     `"
+        >
+          <!-- Styles for the link description font -->
+          <div
+            style="
+              position: absolute;
+              top: 50%;
+              left: 50%;
+              transform: translate(-50%, -50%);
+
+              align-items: center;
+              color: inherit;
+              justify-content: inherit;
+              line-height: normal;
+              position: relative;
+              transition: inherit;
+              transition-property: opacity;
+              max-width: 250px;
+              overflow: hidden;
+              display: -webkit-box;
+              -webkit-line-clamp: 3;
+              -webkit-box-orient: vertical;
+              white-space: initial;
+              text-align: center;
+            "
           >
-            <div
-              style="
-                position: absolute;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
+            {{ link.name }} - {{ link.order }}
+          </div>
+        </v-img>
+      </div>
+      <!-- Second Row First Theme E -->
 
-                align-items: center;
-                color: inherit;
-                justify-content: inherit;
-                line-height: normal;
-                position: relative;
-                transition: inherit;
-                transition-property: opacity;
-                max-width: 250px;
-                overflow: hidden;
-                display: -webkit-box;
-                -webkit-line-clamp: 3;
-                -webkit-box-orient: vertical;
-                white-space: initial;
-                text-align: center;
-              "
-            >
-              {{ link.name }} - {{ link.order }}
-            </div>
-          </v-img>
-        </div>
-        <!-- / Links -->
+      <!-- Second Row Second Theme S -->
+      <div v-if="user.customization.theme_no == 2.2" class="justify-center">
+        <v-img
+          src="http://127.0.0.1:8000/assets/images/7_7_7.png"
+          @mousemove="onMouseOver(link.id)"
+          @mouseout="onMouseOut(link.id)"
+          v-for="(link, index) in SortBylinksOrder(links)"
+          :id="link.id"
+          :key="index"
+          @click="analytic(link)"
+          block
+          class="main-btn my-3"
+          elevation="0"
+          large
+          :style="`
+                        font-size: ${user.customization.fontSize}px;
+                        font-weight: ${user.customization.fontWeight};
+                    `"
+        >
+          <!-- Styles for the link description font -->
+          <div
+            style="
+              position: absolute;
+              top: 50%;
+              left: 50%;
+              transform: translate(-50%, -50%);
 
-        <!-- Social media links -->
+              align-items: center;
+              color: inherit;
+              justify-content: inherit;
+              line-height: normal;
+              position: relative;
+              transition: inherit;
+              transition-property: opacity;
+              max-width: 250px;
+              overflow: hidden;
+              display: -webkit-box;
+              -webkit-line-clamp: 3;
+              -webkit-box-orient: vertical;
+              white-space: initial;
+              text-align: center;
+            "
+          >
+            {{ link.name }} - {{ link.order }}
+          </div>
+        </v-img>
+      </div>
+      <!-- Second Row Second Theme E -->
+
+      <!-- Second Row Third Theme S -->
+      <div v-if="user.customization.theme_no == 2.3" class="justify-center">
+        <v-img
+          src="http://127.0.0.1:8000/assets/images/8_8_8.png"
+          @mousemove="onMouseOver(link.id)"
+          @mouseout="onMouseOut(link.id)"
+          v-for="(link, index) in SortBylinksOrder(links)"
+          :id="link.id"
+          :key="index"
+          @click="analytic(link)"
+          block
+          class="main-btn my-3"
+          elevation="0"
+          large
+          :style="`
+                        font-size: ${user.customization.fontSize}px;
+                        font-weight: ${user.customization.fontWeight};
+                    `"
+        >
+          <!-- Styles for the link description font -->
+          <div
+            style="
+              position: absolute;
+              top: 50%;
+              left: 50%;
+              transform: translate(-50%, -50%);
+
+              align-items: center;
+              color: inherit;
+              justify-content: inherit;
+              line-height: normal;
+              position: relative;
+              transition: inherit;
+              transition-property: opacity;
+              max-width: 250px;
+              overflow: hidden;
+              display: -webkit-box;
+              -webkit-line-clamp: 3;
+              -webkit-box-orient: vertical;
+              white-space: initial;
+              text-align: center;
+            "
+          >
+            {{ link.name }} - {{ link.order }}
+          </div>
+        </v-img>
+      </div>
+      <!-- Second Row Third Theme E -->
+
+      <!-- Third Row First Theme S -->
+      <div v-if="user.customization.theme_no == 3.1" class="justify-center">
+        <v-img
+          src="http://127.0.0.1:8000/assets/images/9_9_9.png"
+          @mousemove="onMouseOver(link.id)"
+          @mouseout="onMouseOut(link.id)"
+          v-for="(link, index) in SortBylinksOrder(links)"
+          :id="link.id"
+          :key="index"
+          @click="analytic(link)"
+          block
+          class="main-btn my-3"
+          elevation="0"
+          large
+          :style="`
+                        font-size: ${user.customization.fontSize}px;
+                        font-weight: ${user.customization.fontWeight};
+                    `"
+        >
+          <!-- Styles for the link description font -->
+          <div
+            style="
+              position: absolute;
+              top: 50%;
+              left: 50%;
+              transform: translate(-50%, -50%);
+
+              align-items: center;
+              color: inherit;
+              justify-content: inherit;
+              line-height: normal;
+              position: relative;
+              transition: inherit;
+              transition-property: opacity;
+              max-width: 250px;
+              overflow: hidden;
+              display: -webkit-box;
+              -webkit-line-clamp: 3;
+              -webkit-box-orient: vertical;
+              white-space: initial;
+              text-align: center;
+            "
+          >
+            {{ link.name }} - {{ link.order }}
+          </div>
+        </v-img>
+      </div>
+      <!-- Third Row First Theme E -->
+
+      <!-- Third Row Second Theme S -->
+      <div v-if="user.customization.theme_no == 3.2" class="justify-center">
+        <v-img
+          src="http://127.0.0.1:8000/assets/images/1_1_1.png"
+          @mousemove="onMouseOver(link.id)"
+          @mouseout="onMouseOut(link.id)"
+          v-for="(link, index) in SortBylinksOrder(links)"
+          :id="link.id"
+          :key="index"
+          @click="analytic(link)"
+          block
+          class="main-btn my-3"
+          elevation="0"
+          large
+          :style="`
+                        font-size: ${user.customization.fontSize}px;
+                        font-weight: ${user.customization.fontWeight};
+                    `"
+        >
+          <!-- Styles for the link description font -->
+          <div
+            style="
+              position: absolute;
+              top: 50%;
+              left: 50%;
+              transform: translate(-50%, -50%);
+
+              align-items: center;
+              color: inherit;
+              justify-content: inherit;
+              line-height: normal;
+              position: relative;
+              transition: inherit;
+              transition-property: opacity;
+              max-width: 250px;
+              overflow: hidden;
+              display: -webkit-box;
+              -webkit-line-clamp: 3;
+              -webkit-box-orient: vertical;
+              white-space: initial;
+              text-align: center;
+            "
+          >
+            {{ link.name }} - {{ link.order }}
+          </div>
+        </v-img>
+      </div>
+      <!-- Third Row Second Theme E -->
+
+      <!-- Third Row Third Theme Image as Button S -->
+      <div v-if="user.customization.theme_no == 3.3">
+        <v-img
+          src="http://127.0.0.1:8000/assets/images/14.png"
+          @mousemove="onMouseOver(link.id)"
+          @mouseout="onMouseOut(link.id)"
+          v-for="(link, index) in SortBylinksOrder(links)"
+          :id="link.id"
+          :key="index"
+          @click="analytic(link)"
+          :style="`
+                        font-size: ${user.customization.fontSize}px;
+                        font-weight: ${user.customization.fontWeight};
+                    `"
+        >
+          <!-- css link description -->
+          <!-- Styles for the link description font -->
+          <div
+            style="
+              position: absolute;
+              top: 50%;
+              left: 50%;
+              transform: translate(-50%, -50%);
+
+              align-items: center;
+              overflow: hidden;
+              text-align: center;
+            "
+          >
+            {{ link.name }} - {{ link.order }}
+          </div>
+        </v-img>
+      </div>
+      <!-- Third Row Third Theme Image as Button E -->
+
+      <!-- / Links -->
+
+      <!-- Social media links -->
+      <div class="mostly-customized-scrollbar2">
         <div
           v-if="social"
           :style="`display: flex; justify-content: center; margin-top: 40px; margin-bottom: 15px;`"
@@ -325,19 +635,23 @@
             mdi-whatsapp
           </v-icon>
         </div>
-        <div style="display: flex; justify-content: center">
-          <a href="/">
-            <v-img
-              style="mix-blend-mode: difference"
-              contain
-              :src="JSON.parse(website).logo"
-              class="linkPageLogo"
-            ></v-img>
-          </a>
-        </div>
-      </v-flex>
-    </v-layout>
-  </div>
+        <!-- </div> -->
+
+        <!-- <div style="display: flex; justify-content: center"> -->
+        <a href="/">
+          <v-img
+            style="mix-blend-mode: difference"
+            contain
+            :src="JSON.parse(website).logo"
+            class="linkPageLogo"
+          ></v-img>
+        </a>
+      </div>
+    </div>
+    <!-- mostly-customized-scrollbar div is up-->
+
+    <!-- </v-flex> -->
+  </v-layout>
 </template>
 
 <script>

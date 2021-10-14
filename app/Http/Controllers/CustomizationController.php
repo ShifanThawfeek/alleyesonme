@@ -35,7 +35,8 @@ class CustomizationController extends Controller
             'buttonBorderHover',
             'borderRadius',
             'iconColor',
-            'usernameFontColor'
+            'usernameFontColor',
+            'theme_no'
         ]));
         return $customization->first();
     }

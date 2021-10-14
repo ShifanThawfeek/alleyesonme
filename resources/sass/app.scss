@@ -42,7 +42,7 @@
         position: relative;
         transition: inherit;
         transition-property: opacity;
-        max-width: 770px;
+        max-width: 722px;
         display: inline-block;
         white-space: normal;
     }
@@ -73,4 +73,82 @@
     margin-right: auto;
     margin-left: auto;
   }
+
+
+  .container--fluid {
+    max-width: 100%;
+    position: absolute;
+}
+
+
+
+
+.visible-scrollbar, .invisible-scrollbar, .mostly-customized-scrollbar {
+  // display: block;
+  width: 45em;
+  overflow: auto;
+  height: 45em;
+}
+
+.invisible-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Demonstrate a "mostly customized" scrollbar
+ * (won't be visible otherwise if width/height is specified) */
+.mostly-customized-scrollbar::-webkit-scrollbar {
+  width: 5px;
+  height: 8px;
+  background-color: #aaa; /* or add it to the track */
+}
+
+
+
+/* Add a thumb */
+.mostly-customized-scrollbar::-webkit-scrollbar-thumb {
+    background: #000;
+}
+
+
+// @media only screen 
+//     and (device-width : 375px) 
+//     and (device-height : 812px) 
+//     and (-webkit-device-pixel-ratio : 3) {
+//       .visible-scrollbar, .invisible-scrollbar, .mostly-customized-scrollbar {
+//         display: block;
+//         width: 20em;
+//         overflow: auto;
+//         height: 60em;
+//       }
+//      }
+
+
+
+  //      .flex.xl5 {
+  //   flex-basis: 41.6666666667%;
+  //   flex-grow: 0;
+  //   max-width: 41.6666666667%;
+  // }
+
+
+  @media screen and (max-width: 1264px) {
+    .title_message {
+      display: none;
+    }
+  }
+
+
+  // .container--fluid {
+  //   max-width: 100%;
+  //   position: absolute;
+  //   margin: 30px;
+  // }
+
+
+  
+
+
+     
+
+     
 

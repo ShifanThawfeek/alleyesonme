@@ -2,11 +2,728 @@
   <div>
     <v-layout row wrap justify-center class="mt-7">
       <v-flex xs11 sm11 md11 lg7 xl5 class="px-5">
+        <!-- Upload Profile Image  -->
+        <v-card elevation="0" class="mb-5">
+          <v-card-title class="grey--text">Upload profile image</v-card-title>
+          <v-card-text>
+            <v-form ref="form" v-model="valid">
+              <form enctype="multipart/form-data">
+                <v-alert type="info" border="left" v-if="imageLoading"
+                  >Uploading the image ...</v-alert
+                >
+                <errors
+                  :success="imageSuccess"
+                  :failure="imageFailure"
+                  :message="imageMessage"
+                ></errors>
+
+                <v-file-input
+                  v-model="profile"
+                  accept="image/*"
+                  label="Profile image"
+                  :rules="[rules.required]"
+                  outlined
+                ></v-file-input>
+
+                <v-btn
+                  color="cyan accent-3"
+                  elevation="0"
+                  class="white--text"
+                  large
+                  @click="uploadImage"
+                  >Save</v-btn
+                >
+              </form>
+            </v-form>
+          </v-card-text>
+        </v-card>
+
+        <!-- Starter templates -->
+        <!-- <v-card elevation="0" class="mb-5">
+          <v-card-title>Starter templates</v-card-title>
+          <v-divider></v-divider>
+          <v-card-text>
+            <v-form ref="themesForm" v-model="themesForm">
+              <v-radio-group v-model="theme" :rules="[rules.required]">
+                <v-radio label="Light" value="light"></v-radio>
+                <v-radio label="Blue" value="blue"></v-radio> -->
+        <!-- <v-radio label="Green" value="green"></v-radio>
+                <v-radio label="ThemeImage" value="themeimage"></v-radio>
+                <v-radio label="ThemeImage2" value="themeimage2"></v-radio> -->
+        <!-- </v-radio-group>
+              <div style="display: flex; justify-content: flex-end">
+                <v-btn
+                  color="cyan accent-3"
+                  elevation="0"
+                  class="white--text"
+                  large
+                  @click="saveTheme"
+                  >Save</v-btn
+                >
+              </div>
+            </v-form>
+          </v-card-text>
+        </v-card> -->
+        <!-- / Starter templates -->
+
+        <!-- Pre built themes -->
+        <v-card elevation="0" class="mb-5">
+          <!-- <v-flex xs12 sm12 md12 lg12 xl6 class="px-5"> -->
+          <v-flex lg12 class="px-5">
+            <v-col class="shrink">
+              <v-card-title>Themes</v-card-title>
+              <v-divider></v-divider>
+
+              <v-card-text>
+                <v-form ref="themesForm" v-model="themesForm">
+                  <v-radio-group v-model="theme" :rules="[rules.required]">
+                    <!-- from here it will go live themes -->
+                    <v-row ref="themesForm" v-model="themesForm">
+                      <!-- Create Your Own Theme -->
+                      <v-col cols="6" sm="4">
+                        <v-img
+                          src="http://127.0.0.1:8000/assets/images/create_your_own.png"
+                          height="200px"
+                          width="150px"
+                          style="border: 1px solid #555"
+                        >
+                          <v-btn
+                            href="#targetDiv"
+                            align="center"
+                            justify="center"
+                            color="#17d8e2"
+                            style="
+                              position: absolute;
+                              transform: translate(-50%, -50%);
+                              margin-right: -50%;
+                              top: 50%;
+                              left: 50%;
+
+                              display: inline-block;
+                              height: auto;
+                              white-space: normal;
+                            "
+                          >
+                            <v-img
+                              icon
+                              src="assets/images/lock.png"
+                              class="ml-3 img-fluid"
+                              width="25px"
+                              height="25px"
+                              style="
+                                position: absolute;
+                                transform: translate(-50%, -50%);
+                                margin-right: -50%;
+                                top: 50%;
+                                left: 0%;
+                              "
+                            >
+                            </v-img>
+                            <p
+                              style="
+                                margin-bottom: 10px;
+                                margin-top: 10px;
+                                margin-left: 27px;
+                              "
+                            >
+                              Create Your Own Theme
+                            </p>
+                          </v-btn>
+                        </v-img>
+
+                        <v-radio
+                          style="display: none"
+                          label=""
+                          value="light"
+                        ></v-radio>
+                      </v-col>
+
+                      <!-- Light -->
+                      <v-col cols="6" sm="4">
+                        <v-img
+                          src="http://127.0.0.1:8000/assets/images/light.png"
+                          height="200px"
+                          width="150px"
+                        ></v-img>
+                        <v-radio label="Light" value="light"></v-radio>
+                      </v-col>
+
+                      <!-- Blue -->
+                      <v-col cols="6" sm="4">
+                        <v-img
+                          src="http://127.0.0.1:8000/assets/images/blue.png"
+                          height="200px"
+                          width="150px"
+                        ></v-img>
+                        <v-radio label="Blue" value="blue"></v-radio>
+                      </v-col>
+
+                      <!-- Purple Dream -->
+                      <v-col cols="6" sm="4">
+                        <v-img
+                          src="http://127.0.0.1:8000/assets/images/_2.png"
+                          height="200px"
+                          width="150px"
+                        ></v-img>
+                        <v-radio label="Purple Dream" value="theme_4"></v-radio>
+                      </v-col>
+
+                      <!-- Shortcake -->
+                      <v-col cols="6" sm="4">
+                        <v-img
+                          src="http://127.0.0.1:8000/assets/images/_3.png"
+                          height="200px"
+                          width="150px"
+                        >
+                          <!-- <div class="fill-height bottom-gradient"></div> -->
+                        </v-img>
+                        <v-radio
+                          label="Shortcake"
+                          value="themeimage2"
+                        ></v-radio>
+                      </v-col>
+
+                      <!-- Rainbow Sketch -->
+                      <v-col cols="6" sm="4" v-if="user.is_subscribed">
+                        <v-img
+                          src="http://127.0.0.1:8000/assets/images/_4.png"
+                          height="200px"
+                          width="150px"
+                        >
+                          <!-- <div class="fill-height repeating-gradient"></div> -->
+                        </v-img>
+                        <v-radio
+                          label="Rainbow Sketch"
+                          value="themeimage"
+                        ></v-radio>
+                      </v-col>
+
+                      <!-- Rainbow Sketch Go Pro-->
+                      <v-col cols="6" sm="4" v-if="!user.is_subscribed">
+                        <v-img
+                          src="http://127.0.0.1:8000/assets/images/_4.png"
+                          height="200px"
+                          width="150px"
+                        >
+                          <!-- <div class="fill-height repeating-gradient"></div> -->
+                          <v-btn
+                            v-if="!user.is_subscribed"
+                            href="/upgrade"
+                            align="center"
+                            justify="center"
+                            color="#17d8e2"
+                            style="
+                              position: absolute;
+                              transform: translate(-50%, -50%);
+                              margin-right: -50%;
+                              top: 50%;
+                              left: 50%;
+
+                              height: auto;
+                              white-space: normal;
+                            "
+                          >
+                            <v-img
+                              icon
+                              src="assets/images/lock.png"
+                              class="ml-3 img-fluid"
+                              width="25px"
+                              height="25px"
+                              style="
+                                position: absolute;
+                                transform: translate(-50%, -50%);
+                                margin-right: -50%;
+                                top: 50%;
+                                left: 0%;
+                              "
+                            >
+                            </v-img>
+                            <p
+                              style="
+                                margin-bottom: 10px;
+                                margin-top: 10px;
+                                margin-left: 27px;
+                              "
+                            >
+                              Pro
+                            </p>
+                          </v-btn>
+                        </v-img>
+
+                        <v-radio
+                          label="Rainbow Sketch"
+                          value="themeimage"
+                          disabled
+                        ></v-radio>
+                      </v-col>
+
+                      <!-- Retro -->
+                      <v-col cols="6" sm="4" v-if="user.is_subscribed">
+                        <v-img
+                          src="http://127.0.0.1:8000/assets/images/_5.png"
+                          height="200px"
+                          width="150px"
+                        ></v-img>
+                        <v-radio label="Retro" value="secondrow1"></v-radio>
+                      </v-col>
+
+                      <!-- Retro Go Pro-->
+                      <v-col cols="6" sm="4" v-if="!user.is_subscribed">
+                        <v-img
+                          src="http://127.0.0.1:8000/assets/images/_5.png"
+                          height="200px"
+                          width="150px"
+                        >
+                          <!-- <div class="fill-height repeating-gradient"></div> -->
+                          <v-btn
+                            v-if="!user.is_subscribed"
+                            href="/upgrade"
+                            align="center"
+                            justify="center"
+                            color="#17d8e2"
+                            style="
+                              position: absolute;
+                              transform: translate(-50%, -50%);
+                              margin-right: -50%;
+                              top: 50%;
+                              left: 50%;
+
+                              height: auto;
+                              white-space: normal;
+                            "
+                          >
+                            <v-img
+                              icon
+                              src="assets/images/lock.png"
+                              class="ml-3 img-fluid"
+                              width="25px"
+                              height="25px"
+                              style="
+                                position: absolute;
+                                transform: translate(-50%, -50%);
+                                margin-right: -50%;
+                                top: 50%;
+                                left: 0%;
+                              "
+                            >
+                            </v-img>
+                            <p
+                              style="
+                                margin-bottom: 10px;
+                                margin-top: 10px;
+                                margin-left: 27px;
+                              "
+                            >
+                              Pro
+                            </p>
+                          </v-btn>
+                        </v-img>
+
+                        <v-radio
+                          label="Rainbow Sketch"
+                          value="themeimage"
+                          disabled
+                        ></v-radio>
+                      </v-col>
+
+                      <!-- Diary Clouds -->
+                      <v-col cols="6" sm="4" v-if="user.is_subscribed">
+                        <v-img
+                          src="http://127.0.0.1:8000/assets/images/_7.png"
+                          height="200px"
+                          width="150px"
+                        >
+                          <!-- <div class="fill-height bottom-gradient"></div> -->
+                        </v-img>
+                        <v-radio
+                          label="Diary Clouds"
+                          value="secondrow2"
+                        ></v-radio>
+                      </v-col>
+
+                      <!-- Diary Clouds Go Pro-->
+                      <v-col cols="6" sm="4" v-if="!user.is_subscribed">
+                        <v-img
+                          src="http://127.0.0.1:8000/assets/images/_7.png"
+                          height="200px"
+                          width="150px"
+                        >
+                          <!-- <div class="fill-height repeating-gradient"></div> -->
+                          <v-btn
+                            v-if="!user.is_subscribed"
+                            href="/upgrade"
+                            align="center"
+                            justify="center"
+                            color="#17d8e2"
+                            style="
+                              position: absolute;
+                              transform: translate(-50%, -50%);
+                              margin-right: -50%;
+                              top: 50%;
+                              left: 50%;
+
+                              height: auto;
+                              white-space: normal;
+                            "
+                          >
+                            <v-img
+                              icon
+                              src="assets/images/lock.png"
+                              class="ml-3 img-fluid"
+                              width="25px"
+                              height="25px"
+                              style="
+                                position: absolute;
+                                transform: translate(-50%, -50%);
+                                margin-right: -50%;
+                                top: 50%;
+                                left: 0%;
+                              "
+                            >
+                            </v-img>
+                            <p
+                              style="
+                                margin-bottom: 10px;
+                                margin-top: 10px;
+                                margin-left: 27px;
+                              "
+                            >
+                              Pro
+                            </p>
+                          </v-btn>
+                        </v-img>
+
+                        <v-radio
+                          label="Rainbow Sketch"
+                          value="themeimage"
+                          disabled
+                        ></v-radio>
+                      </v-col>
+
+                      <!-- Mono.KR -->
+                      <v-col cols="6" sm="4" v-if="user.is_subscribed">
+                        <v-img
+                          src="http://127.0.0.1:8000/assets/images/_8.png"
+                          height="200px"
+                          width="150px"
+                        >
+                          <!-- <div class="fill-height repeating-gradient"></div> -->
+                        </v-img>
+                        <v-radio label="Mono.KR" value="secondrow3"></v-radio>
+                      </v-col>
+
+                      <!-- Mono.KR Go Pro-->
+                      <v-col cols="6" sm="4" v-if="!user.is_subscribed">
+                        <v-img
+                          src="http://127.0.0.1:8000/assets/images/_8.png"
+                          height="200px"
+                          width="150px"
+                        >
+                          <!-- <div class="fill-height repeating-gradient"></div> -->
+                          <v-btn
+                            v-if="!user.is_subscribed"
+                            href="/upgrade"
+                            align="center"
+                            justify="center"
+                            color="#17d8e2"
+                            style="
+                              position: absolute;
+                              transform: translate(-50%, -50%);
+                              margin-right: -50%;
+                              top: 50%;
+                              left: 50%;
+
+                              height: auto;
+                              white-space: normal;
+                            "
+                          >
+                            <v-img
+                              icon
+                              src="assets/images/lock.png"
+                              class="ml-3 img-fluid"
+                              width="25px"
+                              height="25px"
+                              style="
+                                position: absolute;
+                                transform: translate(-50%, -50%);
+                                margin-right: -50%;
+                                top: 50%;
+                                left: 0%;
+                              "
+                            >
+                            </v-img>
+                            <p
+                              style="
+                                margin-bottom: 10px;
+                                margin-top: 10px;
+                                margin-left: 27px;
+                              "
+                            >
+                              Pro
+                            </p>
+                          </v-btn>
+                        </v-img>
+
+                        <v-radio
+                          label="Rainbow Sketch"
+                          value="themeimage"
+                          disabled
+                        ></v-radio>
+                      </v-col>
+
+                      <!-- Peanut Butter -->
+                      <v-col cols="6" sm="4" v-if="user.is_subscribed">
+                        <v-img
+                          src="http://127.0.0.1:8000/assets/images/_9.png"
+                          height="200px"
+                          width="150px"
+                        ></v-img>
+                        <v-radio
+                          label="Peanut Butter"
+                          value="thirdrow1"
+                        ></v-radio>
+                      </v-col>
+
+                      <!-- Peanut Butter Go Pro-->
+                      <v-col cols="6" sm="4" v-if="!user.is_subscribed">
+                        <v-img
+                          src="http://127.0.0.1:8000/assets/images/_9.png"
+                          height="200px"
+                          width="150px"
+                        >
+                          <!-- <div class="fill-height repeating-gradient"></div> -->
+                          <v-btn
+                            v-if="!user.is_subscribed"
+                            href="/upgrade"
+                            align="center"
+                            justify="center"
+                            color="#17d8e2"
+                            style="
+                              position: absolute;
+                              transform: translate(-50%, -50%);
+                              margin-right: -50%;
+                              top: 50%;
+                              left: 50%;
+
+                              height: auto;
+                              white-space: normal;
+                            "
+                          >
+                            <v-img
+                              icon
+                              src="assets/images/lock.png"
+                              class="ml-3 img-fluid"
+                              width="25px"
+                              height="25px"
+                              style="
+                                position: absolute;
+                                transform: translate(-50%, -50%);
+                                margin-right: -50%;
+                                top: 50%;
+                                left: 0%;
+                              "
+                            >
+                            </v-img>
+                            <p
+                              style="
+                                margin-bottom: 10px;
+                                margin-top: 10px;
+                                margin-left: 27px;
+                              "
+                            >
+                              Pro
+                            </p>
+                          </v-btn>
+                        </v-img>
+
+                        <v-radio
+                          label="Rainbow Sketch"
+                          value="themeimage"
+                          disabled
+                        ></v-radio>
+                      </v-col>
+
+                      <!-- Summer Pool -->
+                      <v-col cols="6" sm="4" v-if="user.is_subscribed">
+                        <v-img
+                          src="http://127.0.0.1:8000/assets/images/_10.png"
+                          height="200px"
+                          width="150px"
+                        >
+                          <div class="fill-height bottom-gradient"></div>
+                        </v-img>
+                        <v-radio
+                          label="Summer Pool"
+                          value="thirdrow2"
+                        ></v-radio>
+                      </v-col>
+
+                      <!-- Summer Pool Go Pro-->
+                      <v-col cols="6" sm="4" v-if="!user.is_subscribed">
+                        <v-img
+                          src="http://127.0.0.1:8000/assets/images/_10.png"
+                          height="200px"
+                          width="150px"
+                        >
+                          <!-- <div class="fill-height repeating-gradient"></div> -->
+                          <v-btn
+                            v-if="!user.is_subscribed"
+                            href="/upgrade"
+                            align="center"
+                            justify="center"
+                            color="#17d8e2"
+                            style="
+                              position: absolute;
+                              transform: translate(-50%, -50%);
+                              margin-right: -50%;
+                              top: 50%;
+                              left: 50%;
+
+                              height: auto;
+                              white-space: normal;
+                            "
+                          >
+                            <v-img
+                              icon
+                              src="assets/images/lock.png"
+                              class="ml-3 img-fluid"
+                              width="25px"
+                              height="25px"
+                              style="
+                                position: absolute;
+                                transform: translate(-50%, -50%);
+                                margin-right: -50%;
+                                top: 50%;
+                                left: 0%;
+                              "
+                            >
+                            </v-img>
+                            <p
+                              style="
+                                margin-bottom: 10px;
+                                margin-top: 10px;
+                                margin-left: 27px;
+                              "
+                            >
+                              Pro
+                            </p>
+                          </v-btn>
+                        </v-img>
+
+                        <v-radio
+                          label="Rainbow Sketch"
+                          value="themeimage"
+                          disabled
+                        ></v-radio>
+                      </v-col>
+
+                      <!-- Purple Journal -->
+                      <v-col cols="6" sm="4" v-if="user.is_subscribed">
+                        <v-img
+                          src="http://127.0.0.1:8000/assets/images/_11.png"
+                          height="200px"
+                          width="150px"
+                        >
+                          <!-- <div class="fill-height repeating-gradient"></div> -->
+                        </v-img>
+                        <v-radio
+                          label="Purple Journal"
+                          value="thirdrow3"
+                        ></v-radio>
+                      </v-col>
+
+                      <!-- Purple Journal Go Pro-->
+                      <v-col cols="6" sm="4" v-if="!user.is_subscribed">
+                        <v-img
+                          src="http://127.0.0.1:8000/assets/images/_11.png"
+                          height="200px"
+                          width="150px"
+                        >
+                          <!-- <div class="fill-height repeating-gradient"></div> -->
+                          <v-btn
+                            v-if="!user.is_subscribed"
+                            href="/upgrade"
+                            align="center"
+                            justify="center"
+                            color="#17d8e2"
+                            style="
+                              position: absolute;
+                              transform: translate(-50%, -50%);
+                              margin-right: -50%;
+                              top: 50%;
+                              left: 50%;
+
+                              height: auto;
+                              white-space: normal;
+                            "
+                          >
+                            <v-img
+                              icon
+                              src="assets/images/lock.png"
+                              class="ml-3 img-fluid"
+                              width="25px"
+                              height="25px"
+                              style="
+                                position: absolute;
+                                transform: translate(-50%, -50%);
+                                margin-right: -50%;
+                                top: 50%;
+                                left: 0%;
+                              "
+                            >
+                            </v-img>
+                            <p
+                              style="
+                                margin-bottom: 10px;
+                                margin-top: 10px;
+                                margin-left: 27px;
+                              "
+                            >
+                              Pro
+                            </p>
+                          </v-btn>
+                        </v-img>
+
+                        <v-radio
+                          label="Rainbow Sketch"
+                          value="themeimage"
+                          disabled
+                        ></v-radio>
+                      </v-col>
+                    </v-row>
+
+                    <!-- end of here it will go live themes -->
+                  </v-radio-group>
+
+                  <div style="display: flex; justify-content: flex-end">
+                    <v-btn
+                      color="cyan accent-3"
+                      elevation="0"
+                      class="white--text"
+                      large
+                      @click="saveTheme"
+                      >Save</v-btn
+                    >
+                  </div>
+                </v-form>
+              </v-card-text>
+            </v-col>
+          </v-flex>
+        </v-card>
+        <!-- / Pre built themes -->
+
         <!-- Customization -->
+        <div id="targetDiv"></div>
         <v-card elevation="0" class="mb-5">
           <v-card-title class="grey--text"
             >Link page customization</v-card-title
           >
+
+          <!-- <label>Name:</label> -->
+          <!-- <input type="text" v-model="name" /> -->
+          <!-- <span>{{ name }}</span> -->
+          <!-- <span>{{ fontSize }}</span> -->
+
           <v-card-text v-if="user.is_subscribed">
             <v-form ref="form">
               <errors
@@ -27,7 +744,7 @@
                   @click="
                     (pageBackground = isUrl(customization.pageBackground)
                       ? customization.pageBackground
-                      : 'https://resi.ze-robot.com/dl/4k/4k-desktop-wallpaper.-2560%C3%971440.jpg'),
+                      : 'https://resi.ze-robot.com/dl/4k/4k-desktop-wallpaper.-2560%C3%971440.jpg'), // test shifan
                       (type = 'image')
                   "
                 ></v-radio>
@@ -464,38 +1181,6 @@
 
                 <br />
 
-                <!-- 
-
-                <div style="display: flex; justify-content: flex-end">
-                  <v-btn-toggle>
-                    <v-btn
-                      target="_blank"
-                      :href="'/' + user.username"
-                      color="primary accent-3"
-                      elevation="0"
-                      class="white--text mt-2"
-                      small
-                      >Preview</v-btn
-                    >
-                    <v-btn
-                      color="success accent-3"
-                      elevation="0"
-                      class="white--text mt-2"
-                      small
-                      @click="refreshPreview"
-                      >Refresh</v-btn
-                    >
-                    <v-btn
-                      color="cyan accent-3"
-                      elevation="0"
-                      class="white--text mt-2"
-                      small
-                      @click="customize"
-                      >Save Changes</v-btn
-                    >
-                  </v-btn-toggle>
-                </div> -->
-
                 <div style="display: flex; justify-content: flex-end">
                   <v-btn-toggle>
                     <v-btn
@@ -521,18 +1206,10 @@
                       class="white--text mt-2"
                       large
                       @click="customize"
-                      >Save</v-btn
+                      >Save1</v-btn
                     >
                   </v-btn-toggle>
                 </div>
-
-                <!-- <v-container>
-    <v-layout wrap align-content-space-around text-xs-center>
-      <v-flex xs3><v-card color="blue"><v-card-text class="px-0">1</v-card-text></v-card></v-flex>
-      <v-flex xs3><v-card color="blue"><v-card-text class="px-0">2</v-card-text></v-card></v-flex>
-      <v-flex xs3><v-card color="blue"><v-card-text class="px-0">3</v-card-text></v-card></v-flex>
-    </v-layout>
-</v-container> -->
               </v-layout>
               <br />
             </v-form>
@@ -546,84 +1223,48 @@
         </v-card>
         <!-- / Customization -->
 
-        <!-- Starter templates -->
-        <v-card elevation="0" class="mb-5">
-          <v-card-title>Starter templates</v-card-title>
-          <v-divider></v-divider>
-          <v-card-text>
-            <v-form ref="themesForm" v-model="themesForm">
-              <v-radio-group v-model="theme" :rules="[rules.required]">
-                <v-radio label="Light" value="light"></v-radio>
-                <v-radio label="Blue" value="blue"></v-radio>
-                <v-radio label="Green" value="green"></v-radio>
-                <v-radio label="ThemeImage" value="themeimage"></v-radio>
-                <v-radio label="ThemeImage2" value="themeimage2"></v-radio>
-              </v-radio-group>
-              <div style="display: flex; justify-content: flex-end">
-                <v-btn
-                  color="cyan accent-3"
-                  elevation="0"
-                  class="white--text"
-                  large
-                  @click="saveTheme"
-                  >Save</v-btn
-                >
-              </div>
-            </v-form>
-          </v-card-text>
-        </v-card>
-        <!-- / Starter templates -->
-
-        <!-- Profile Image Upload -->
-        <v-card elevation="0" class="mb-5">
-          <v-card-title class="grey--text">Upload profile image</v-card-title>
-          <v-card-text>
-            <v-form ref="form" v-model="valid">
-              <form enctype="multipart/form-data">
-                <v-alert type="info" border="left" v-if="imageLoading"
-                  >Uploading the image ...</v-alert
-                >
-                <errors
-                  :success="imageSuccess"
-                  :failure="imageFailure"
-                  :message="imageMessage"
-                ></errors>
-
-                <v-file-input
-                  v-model="profile"
-                  accept="image/*"
-                  label="Profile image"
-                  :rules="[rules.required]"
-                  outlined
-                ></v-file-input>
-
-                <v-btn
-                  color="cyan accent-3"
-                  elevation="0"
-                  class="white--text"
-                  large
-                  @click="uploadImage"
-                  >Save</v-btn
-                >
-              </form>
-            </v-form>
-          </v-card-text>
-        </v-card>
-
         <!-- / Profile Image Upload -->
       </v-flex>
 
-      <v-flex xs10 sm10 md10 lg5 xl10 row wrap justify-center>
+      <!-- Links Page Preview In Customization Page -->
+      <!-- <v-flex xs10 sm10 md10 lg5 xl10 row wrap justify-center>
         <iframe
           ref="iframe"
           :src="iframeSrc"
           style="
-            width: 500px;
-            height: 700px;
+            width: 352px;
+            height: 500px;
             border-radius: 25px;
             border: 0px;
             vertical-align: center;
             text-align: center;
+
+            position: fixed;
+            bottom: 100px;
+            right: 50px;
+            padding: 16px;
+          "
+        ></iframe>
+      </v-flex> -->
+
+      <!-- Links Page Preview In Customization Page -->
+      <v-flex row wrap justify-center class="title_message">
+        <iframe
+          ref="iframe"
+          :src="iframeSrc"
+          style="
+           
+            height: 500px;
+            border-radius: 25px;
+            border: 0px;
+            vertical-align: center;
+            text-align: center;
+
+            position: fixed;
+            top: 120px;
+            bottom: 50px;
+            right: 180px;
+            padding: 16px;
           "
         ></iframe>
       </v-flex>
@@ -645,6 +1286,7 @@ export default {
       rules: {
         required: (value) => !!value || "Required",
       },
+      // name: '',
       color: "#76D2FFFF",
       mask: "!#XXXXXXXX",
       mask1: "!#XXXXXXXX",
@@ -694,6 +1336,7 @@ export default {
       backgroundImage: "",
       iconColor: "",
       usernameFontColor: "",
+      theme_no: "",
       customSuccess: false,
       customFailure: false,
       customMessage: "",
@@ -708,7 +1351,7 @@ export default {
       theme: "",
       light: {
         name: "Light",
-        colors: ["white", "#28abb2"],
+        colors: ["#ffffff", "#ffffff"],
       },
       blue: {
         name: "Blue",
@@ -722,9 +1365,17 @@ export default {
         name: "ThemeImage",
         colors: ["#e8c8e2", "#cf17ac"],
       },
-            themeimage2: {
+      themeimage2: {
         name: "ThemeImage2",
         colors: ["#fad6a5", "#5f9ea0"],
+      },
+      theme_4: {
+        name: "Theme4",
+        colors: ["#1f4037", "#99f2c8"],
+      },
+      secondrow1: {
+        name: "Secondrow1",
+        colors: ["#1f4037", "#99f2c8"],
       },
     };
   },
@@ -843,6 +1494,7 @@ export default {
       ); // fragment locator
       return pattern.test(value);
     },
+
     uploadImage() {
       this.imageSuccess = false;
       this.imageFailure = false;
@@ -904,7 +1556,7 @@ export default {
         borderRadius: this.borderRadius,
         iconColor: this.iconColor,
         usernameFontColor: this.usernameFontColor,
-        theme_no: "0",
+        theme_no: "",
       };
       // Update the customization settings
       axios
@@ -941,50 +1593,35 @@ export default {
           buttonBorder: "#17D8E2",
           buttonBorderHover: "#e2c717",
           usernameFontColor: "#1a211b",
-          theme_no: "0",
+          theme_no: "",
         };
       }
       if (this.theme == "light") {
         theme = this.light;
         theme = {
           pageBackground: this.light,
+          buttonBackground: "#a5d4d6",
           iconColor: "#17D8E2",
           buttonborderHover: "#17D8E2",
-          theme_no: "0",
+          theme_no: "",
         };
       }
-      if (this.theme == "green") {
-        theme = this.green;
-        theme = {
-          pageBackground: this.green,
-          iconColor: "#d43b24",
-          buttonborderHover: "#17D8E2",
-          usernameFontColor: "#1712a3",
-          theme_no: "0",
-        };
-      }
-      // if (this.theme == "themeimage")
-      // {
-      //     theme = this.themeimage;
-      //     theme = {
-      //     pageBackground: 'https://images.unsplash.com/photo-1544904823-702346908aec?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80',
-      //     iconColor: "#d43b24",
-      //     buttonborderHover: "#17D8E2",
-      //     usernameFontColor: "#1712a3",
-      //     buttonBorderSize: 1,
-      //     borderRadius: 5,
-      //     buttonBorder: "#FF468F",
-      //   };
-      // }
-      // pageBackground: ' http://127.0.0.1:8000/assets/images/8.png',
 
-      //  src="assets/images/analyticsSample.jpg"
+      if (this.theme == "theme_4") {
+        theme = this.theme_4;
+        theme = {
+          pageBackground: "http://127.0.0.1:8000/assets/images/2_2.png",
+          // this.theme_4,
+          iconColor: "#17D8E2",
+          usernameFontColor: "#17D8E2",
+          theme_no: "1.1",
+        };
+      }
 
       if (this.theme == "themeimage") {
         theme = this.themeimage;
         theme = {
-          // pageBackground:
-            // "https://images.unsplash.com/photo-1544904823-702346908aec?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80",
+          pageBackground: "http://127.0.0.1:8000/assets/images/4_4.png",
           iconColor: "#d43b24",
           usernameFontColor: "#1712a3",
           theme_no: "1",
@@ -1000,8 +1637,7 @@ export default {
       if (this.theme == "themeimage2") {
         theme = this.themeimage2;
         theme = {
-          pageBackground:this.themeimage2, 
-            // "https://images.unsplash.com/photo-1544904823-702346908aec?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80",
+          pageBackground: "http://127.0.0.1:8000/assets/images/3_3.png",
           iconColor: "#d43b24",
           usernameFontColor: "#1712a3",
           theme_no: "2",
@@ -1013,6 +1649,112 @@ export default {
           buttonborderHover: "",
         };
       }
+
+      if (this.theme == "secondrow1") {
+        theme = this.secondrow1;
+        theme = {
+          pageBackground: "http://127.0.0.1:8000/assets/images/5_5.png",
+          iconColor: "#d43b24",
+          usernameFontColor: "#1712a3",
+          theme_no: "2.1",
+          buttonBackground: "",
+          buttonBackgroundHover: "",
+          buttonborderHover: "",
+          buttonBorderSize: 0,
+          buttonBorderSizeHover: 0,
+          buttonborderHover: "",
+        };
+      }
+
+      // Other than link button customization S theme_no: "2.2",
+      if (this.theme == "secondrow2") {
+        theme = this.secondrow2;
+        theme = {
+          pageBackground: "http://127.0.0.1:8000/assets/images/7_7.png",
+          iconColor: "#d43b24",
+          usernameFontColor: "#1712a3",
+          theme_no: "2.2",
+          buttonBackground: "",
+          buttonBackgroundHover: "",
+          buttonborderHover: "",
+          buttonBorderSize: 0,
+          buttonBorderSizeHover: 0,
+          buttonborderHover: "",
+        };
+      }
+      // Other than link button customization E
+
+      // Other than link button customization S theme_no: "2.3",
+      if (this.theme == "secondrow3") {
+        theme = this.secondrow3;
+        theme = {
+          pageBackground: "http://127.0.0.1:8000/assets/images/8_8.png",
+          iconColor: "#d43b24",
+          usernameFontColor: "#1712a3",
+          theme_no: "2.3",
+          buttonBackground: "",
+          buttonBackgroundHover: "",
+          buttonborderHover: "",
+          buttonBorderSize: 0,
+          buttonBorderSizeHover: 0,
+          buttonborderHover: "",
+        };
+      }
+      // Other than link button customization E
+
+      // Other than link button customization S theme_no: "3.1",
+      if (this.theme == "thirdrow1") {
+        theme = this.thirdrow1;
+        theme = {
+          pageBackground: "http://127.0.0.1:8000/assets/images/9_9.png",
+          iconColor: "#d43b24",
+          usernameFontColor: "#1712a3",
+          theme_no: "3.1",
+          buttonBackground: "",
+          buttonBackgroundHover: "",
+          buttonborderHover: "",
+          buttonBorderSize: 0,
+          buttonBorderSizeHover: 0,
+          buttonborderHover: "",
+        };
+      }
+      // Other than link button customization E
+
+      // Other than link button customization S theme_no: "3.2",
+      if (this.theme == "thirdrow2") {
+        theme = this.thirdrow2;
+        theme = {
+          pageBackground: "http://127.0.0.1:8000/assets/images/1_.png",
+          iconColor: "#d43b24",
+          usernameFontColor: "#1712a3",
+          theme_no: "3.2",
+          buttonBackground: "",
+          buttonBackgroundHover: "",
+          buttonborderHover: "",
+          buttonBorderSize: 0,
+          buttonBorderSizeHover: 0,
+          buttonborderHover: "",
+        };
+      }
+      // Other than link button customization E
+
+      // Other than link button customization S theme_no: "3.3",
+      if (this.theme == "thirdrow3") {
+        theme = this.thirdrow3;
+        theme = {
+          pageBackground: "http://127.0.0.1:8000/assets/images/13.png",
+          iconColor: "#d43b24",
+          usernameFontColor: "#1712a3",
+          theme_no: "3.3",
+          buttonBackground: "",
+          buttonBackgroundHover: "",
+          buttonborderHover: "",
+          buttonBorderSize: 0,
+          buttonBorderSizeHover: 0,
+          buttonborderHover: "",
+        };
+      }
+      // Other than link button customization E
 
       axios
         .put("/change/background", theme)
@@ -1032,9 +1774,13 @@ export default {
             (this.fontWeight = res.data.fontWeight),
             (this.fontColor = res.data.fontColor),
             (this.fontColorHover = res.data.fontColorHover),
-            (this.pageBackground = this.isUrl(res.data.pageBackground)
-              ? res.data.pageBackground
-              : JSON.parse(res.data.pageBackground)),
+            // (this.pageBackground = this.isUrl(res.data.pageBackground)
+            //   ? res.data.pageBackground
+            //   : JSON.parse(res.data.pageBackground)),
+
+            (this.pageBackground =
+              // "https://static.remove.bg/sample-gallery/graphics/bird-thumbnail.jpg"),
+              "http://127.0.0.1:8000/assets/images/4k_desktop.jpg"), // test shifan
             (this.buttonBackground = res.data.buttonBackground),
             (this.buttonBackgroundHover = res.data.buttonBackgroundHover),
             (this.buttonBorderSize = res.data.buttonBorderSize),
@@ -1044,6 +1790,8 @@ export default {
             (this.borderRadius = res.data.borderRadius),
             (this.iconColor = res.data.iconColor);
           this.usernameFontColor = res.data.usernameFontColor;
+          this.theme_no = res.data.theme_no;
+
           if (this.isUrl(res.data.pageBackground)) {
             this.type = "image";
           } else {

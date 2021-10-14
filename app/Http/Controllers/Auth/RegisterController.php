@@ -98,7 +98,8 @@ class RegisterController extends Controller
             'buttonBorderHover' => 'white',
             'borderRadius' => '12',
             'iconColor' => 'white',
-            'usernameFontColor' => 'blue'
+            'usernameFontColor' => 'blue',
+            'theme_no' => ''
         ]);
         return $user;
     }

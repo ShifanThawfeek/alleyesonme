@@ -29335,7 +29335,7 @@ html.overflow-y-hidden {
     position: relative;
     transition: inherit;
     transition-property: opacity;
-    max-width: 770px;
+    max-width: 722px;
     display: inline-block;
     white-space: normal;
   }
@@ -29359,4 +29359,39 @@ html.overflow-y-hidden {
   padding-left: 12px;
   margin-right: auto;
   margin-left: auto;
+}
+
+.container--fluid {
+  max-width: 100%;
+  position: absolute;
+}
+
+.visible-scrollbar, .invisible-scrollbar, .mostly-customized-scrollbar {
+  width: 45em;
+  overflow: auto;
+  height: 45em;
+}
+
+.invisible-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Demonstrate a "mostly customized" scrollbar
+ * (won't be visible otherwise if width/height is specified) */
+.mostly-customized-scrollbar::-webkit-scrollbar {
+  width: 5px;
+  height: 8px;
+  background-color: #aaa;
+  /* or add it to the track */
+}
+
+/* Add a thumb */
+.mostly-customized-scrollbar::-webkit-scrollbar-thumb {
+  background: #000;
+}
+
+@media screen and (max-width: 1264px) {
+  .title_message {
+    display: none;
+  }
 }

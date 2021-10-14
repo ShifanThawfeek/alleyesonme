@@ -24,7 +24,8 @@ class Customization extends Model
         'buttonBorderHover',
         'borderRadius',
         'iconColor',
-        'usernameFontColor'
+        'usernameFontColor',
+        'theme_no'
     ];
 
     public function user()
