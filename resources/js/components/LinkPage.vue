@@ -37,6 +37,7 @@
         >
       </div>
 
+      <!-- Bio -->
       <p class="text-center caption mt-2" style="font-size: 15px !important">
         {{ user.description }}
       </p>
@@ -108,14 +109,13 @@
               position: absolute;
               top: 50%;
               left: 50%;
+              color: #000000;
               transform: translate(-50%, -50%);
               align-items: center;
-              color: inherit;
               justify-content: inherit;
               line-height: normal;
               position: relative;
               transition: inherit;
-              transition-property: opacity;
               max-width: 250px;
               overflow: hidden;
               display: -webkit-box;
@@ -154,14 +154,13 @@
               position: absolute;
               top: 50%;
               left: 50%;
+              color: #001189;
               transform: translate(-50%, -50%);
               align-items: center;
-              color: inherit;
               justify-content: inherit;
               line-height: normal;
               position: relative;
               transition: inherit;
-              transition-property: opacity;
               max-width: 250px;
               overflow: hidden;
               display: -webkit-box;
@@ -201,14 +200,13 @@
               top: 50%;
               left: 50%;
               transform: translate(-50%, -50%);
+              color: #212931;
 
               align-items: center;
-              color: inherit;
               justify-content: inherit;
               line-height: normal;
               position: relative;
               transition: inherit;
-              transition-property: opacity;
               max-width: 250px;
               overflow: hidden;
               display: -webkit-box;
@@ -251,12 +249,10 @@
               transform: translate(-50%, -50%);
 
               align-items: center;
-              color: inherit;
               justify-content: inherit;
               line-height: normal;
               position: relative;
               transition: inherit;
-              transition-property: opacity;
               max-width: 250px;
               overflow: hidden;
               display: -webkit-box;
@@ -298,14 +294,13 @@
               top: 50%;
               left: 50%;
               transform: translate(-50%, -50%);
+              color: #FFFFFF;
 
               align-items: center;
-              color: inherit;
               justify-content: inherit;
               line-height: normal;
               position: relative;
               transition: inherit;
-              transition-property: opacity;
               max-width: 250px;
               overflow: hidden;
               display: -webkit-box;
@@ -347,14 +342,13 @@
               top: 50%;
               left: 50%;
               transform: translate(-50%, -50%);
+              color: #C6951B;
 
               align-items: center;
-              color: inherit;
               justify-content: inherit;
               line-height: normal;
               position: relative;
               transition: inherit;
-              transition-property: opacity;
               max-width: 250px;
               overflow: hidden;
               display: -webkit-box;
@@ -396,14 +390,12 @@
               top: 50%;
               left: 50%;
               transform: translate(-50%, -50%);
-
+              color: #FFFFFF; 
               align-items: center;
-              color: inherit;
               justify-content: inherit;
               line-height: normal;
               position: relative;
               transition: inherit;
-              transition-property: opacity;
               max-width: 250px;
               overflow: hidden;
               display: -webkit-box;
@@ -446,13 +438,12 @@
               left: 50%;
               transform: translate(-50%, -50%);
 
+              color: #212931;
               align-items: center;
-              color: inherit;
               justify-content: inherit;
               line-height: normal;
               position: relative;
               transition: inherit;
-              transition-property: opacity;
               max-width: 250px;
               overflow: hidden;
               display: -webkit-box;
@@ -491,6 +482,7 @@
               top: 50%;
               left: 50%;
               transform: translate(-50%, -50%);
+              color: #FFFFFF;
 
               align-items: center;
               overflow: hidden;

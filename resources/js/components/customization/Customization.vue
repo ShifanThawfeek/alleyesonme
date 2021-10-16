@@ -333,7 +333,6 @@
                           height="200px"
                           width="150px"
                         >
-                          <!-- <div class="fill-height bottom-gradient"></div> -->
                         </v-img>
                         <v-radio
                           label="Diary Clouds"
@@ -348,7 +347,6 @@
                           height="200px"
                           width="150px"
                         >
-                          <!-- <div class="fill-height repeating-gradient"></div> -->
                           <v-btn
                             v-if="!user.is_subscribed"
                             href="/upgrade"
@@ -1361,18 +1359,18 @@ export default {
         name: "Green",
         colors: ["#3dbd0f", "#c9c8e8"],
       },
-      themeimage: {
-        name: "ThemeImage",
-        colors: ["#e8c8e2", "#cf17ac"],
-      },
+      // themeimage: {
+      //   name: "ThemeImage",
+      //   colors: ["#e8c8e2", "#cf17ac"],
+      // },
       themeimage2: {
         name: "ThemeImage2",
         colors: ["#fad6a5", "#5f9ea0"],
       },
-      theme_4: {
-        name: "Theme4",
-        colors: ["#1f4037", "#99f2c8"],
-      },
+      // theme_4: {
+      //   name: "Theme4",
+      //   colors: ["#1f4037", "#99f2c8"],
+      // },
       secondrow1: {
         name: "Secondrow1",
         colors: ["#1f4037", "#99f2c8"],
@@ -1588,11 +1586,11 @@ export default {
           iconColor: "#17D8E2",
           fontColor: "#1a211b",
           fontColorHover: "#c42344",
-          buttonBackground: "#17D8E2",
-          buttonBackgroundHover: "#17D8E2",
+          buttonBackground: "#ffffff",
+          buttonBackgroundHover: "#ffffff",
           buttonBorder: "#17D8E2",
           buttonBorderHover: "#e2c717",
-          usernameFontColor: "#1a211b",
+          usernameFontColor: "#ffffff",
           theme_no: "",
         };
       }
@@ -1600,9 +1598,12 @@ export default {
         theme = this.light;
         theme = {
           pageBackground: this.light,
-          buttonBackground: "#a5d4d6",
+          buttonBackgroundHover: "#17D8E2",
+          buttonBackground: "#17D8E2",
           iconColor: "#17D8E2",
           buttonborderHover: "#17D8E2",
+          fontColor: "#FFFFFF",
+          usernameFontColor: "#17d8e2",
           theme_no: "",
         };
       }
@@ -1611,9 +1612,11 @@ export default {
         theme = this.theme_4;
         theme = {
           pageBackground: "http://127.0.0.1:8000/assets/images/2_2.png",
+          // buttonBackground: "#17D8E2",
           // this.theme_4,
-          iconColor: "#17D8E2",
-          usernameFontColor: "#17D8E2",
+          iconColor: "#7834FF",
+          usernameFontColor: "#FFFFFF",
+          buttonBackgroundHover: "",
           theme_no: "1.1",
         };
       }
@@ -1622,8 +1625,8 @@ export default {
         theme = this.themeimage;
         theme = {
           pageBackground: "http://127.0.0.1:8000/assets/images/4_4.png",
-          iconColor: "#d43b24",
-          usernameFontColor: "#1712a3",
+          iconColor: "#6064A6",
+          usernameFontColor: "#001189",
           theme_no: "1",
           buttonBackground: "",
           buttonBackgroundHover: "",
@@ -1639,7 +1642,8 @@ export default {
         theme = {
           pageBackground: "http://127.0.0.1:8000/assets/images/3_3.png",
           iconColor: "#d43b24",
-          usernameFontColor: "#1712a3",
+          usernameFontColor: "#B47343",
+          iconColor: "#B47343",
           theme_no: "2",
           buttonBackground: "",
           buttonBackgroundHover: "",
@@ -1654,8 +1658,8 @@ export default {
         theme = this.secondrow1;
         theme = {
           pageBackground: "http://127.0.0.1:8000/assets/images/5_5.png",
-          iconColor: "#d43b24",
-          usernameFontColor: "#1712a3",
+          iconColor: "#ffffff",
+          usernameFontColor: "#262C3D",
           theme_no: "2.1",
           buttonBackground: "",
           buttonBackgroundHover: "",
@@ -1668,18 +1672,18 @@ export default {
 
       // Other than link button customization S theme_no: "2.2",
       if (this.theme == "secondrow2") {
-        theme = this.secondrow2;
+        // theme = this.secondrow2;
         theme = {
           pageBackground: "http://127.0.0.1:8000/assets/images/7_7.png",
-          iconColor: "#d43b24",
-          usernameFontColor: "#1712a3",
+          iconColor: "#FFFFFF",
+          usernameFontColor: "#FFFFFF",
+          fontColor: "#FFFFFF",
           theme_no: "2.2",
           buttonBackground: "",
           buttonBackgroundHover: "",
           buttonborderHover: "",
           buttonBorderSize: 0,
           buttonBorderSizeHover: 0,
-          buttonborderHover: "",
         };
       }
       // Other than link button customization E
@@ -1689,8 +1693,9 @@ export default {
         theme = this.secondrow3;
         theme = {
           pageBackground: "http://127.0.0.1:8000/assets/images/8_8.png",
-          iconColor: "#d43b24",
-          usernameFontColor: "#1712a3",
+          iconColor: "#694242",
+          usernameFontColor: "#C6951B",
+          fontColor: "#C6951B",
           theme_no: "2.3",
           buttonBackground: "",
           buttonBackgroundHover: "",
@@ -1706,9 +1711,10 @@ export default {
       if (this.theme == "thirdrow1") {
         theme = this.thirdrow1;
         theme = {
+          fontColor: "#F8F7F3",
           pageBackground: "http://127.0.0.1:8000/assets/images/9_9.png",
-          iconColor: "#d43b24",
-          usernameFontColor: "#1712a3",
+          iconColor: "#FFFFFF",
+          usernameFontColor: "#C28A00",          
           theme_no: "3.1",
           buttonBackground: "",
           buttonBackgroundHover: "",
@@ -1725,8 +1731,9 @@ export default {
         theme = this.thirdrow2;
         theme = {
           pageBackground: "http://127.0.0.1:8000/assets/images/1_.png",
-          iconColor: "#d43b24",
-          usernameFontColor: "#1712a3",
+          iconColor: "#7834FF",
+          usernameFontColor: "#7834FF",
+          fontColor: "#212931",
           theme_no: "3.2",
           buttonBackground: "",
           buttonBackgroundHover: "",
